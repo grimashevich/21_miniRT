@@ -19,6 +19,7 @@ LDLIBS := -lft
 
 
 SRC_COMMON := 	get_next_line.c		get_next_line_utils.c	ft_split_new.c		ft_strjoin3.c	\
+				common_funcs0.c		common_funcs1.c
 				
 SRC := 			$(SRC_COMMON)		main.c
 

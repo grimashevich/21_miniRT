@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: EClown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 20:33:09 by eclown            #+#    #+#             */
-/*   Updated: 2022/01/29 22:25:20 by EClown           ###   ########.fr       */
+/*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
+/*   Updated: 2022/08/30 19:00:29 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "minirt.h"
 
@@ -31,22 +33,11 @@ t_scr *scr_init()
 }
 
 
-double	ft_atod(char *str)
-{
-/* 	double	result;
-	int		part1;
-	int		part2; */
-	char	**splits;
-
-	splits = ft_split_new(str, '.');
-	return (1.2);
-	
-}
 
 
 void	sandbox()
 {
-	ft_atod("12....25");
+	ft_atod("0.0001");
 }
 
 

@@ -50,3 +50,19 @@ void	free_text(char **text)
 	}
 	free(text);
 }
+
+int	ft_num_len(int n)
+{
+	int res;
+
+	if (n == 0)
+		return (1);
+	res = 0;
+	while (n)
+	{
+		res++;
+		n = n / 10;
+	}
+	return (n);
+}
+

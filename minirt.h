@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: EClown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/01/29 23:12:07 by EClown           ###   ########.fr       */
+/*   Updated: 2022/08/30 19:01:01 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ typedef struct s_scr {
 
 char	**ft_split_new(char *str, char sep);
 int		text_len(char **text);
+void	free_text(char **text);
+int		ft_num_len(int n);
+double	ft_atod(char *str);
 
 #endif
