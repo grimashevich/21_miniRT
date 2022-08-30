@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
-/*   Updated: 2022/08/30 19:04:13 by eclown           ###   ########.fr       */
+/*   Updated: 2022/08/30 19:05:25 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ t_scr *scr_init()
 			768, "miniRT");
 	return (screen);
 }
-
-
-
 
 void	sandbox()
 {
