@@ -16,6 +16,9 @@ LDLIBS := -lft
 #SRC_COMMON := 	get_next_line.c		get_next_line_utils.c	common_funcs0.c		check_map0.c	\
 				check_map1.c		map_init0.c				load_images.c		main_logick0.c	\
 				main_logick1.c		map_init1.c
+
+
+SRC_COMMON := 	get_next_line.c		get_next_line_utils.c	ft_split_new.c		ft_strjoin3.c	\
 				
 SRC := 			$(SRC_COMMON)		main.c
 

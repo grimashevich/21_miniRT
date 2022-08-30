@@ -30,8 +30,31 @@ t_scr *scr_init()
 	return (screen);
 }
 
+
+double	ft_atod(char *str)
+{
+/* 	double	result;
+	int		part1;
+	int		part2; */
+	char	**splits;
+
+	splits = ft_split_new(str, '.');
+	return (1.2);
+	
+}
+
+
+void	sandbox()
+{
+	ft_atod("12....25");
+}
+
+
 int	main(int argc, char *argv[])
 {
+
+	sandbox();
+	return (0);
 
 	(void) argc;
 	(void) argv;

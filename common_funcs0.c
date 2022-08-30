@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "minirt.h"
 
 char	*get_trim_str(char *s1, char const *set)
 {
@@ -25,20 +25,28 @@ char	*get_trim_str(char *s1, char const *set)
 	return (result);
 }
 
-void	*free_and_return_null(void *p)
+int	text_len(char **text)
 {
-	free(p);
-	return (NULL);
+	int	i;
+
+	i = 0;
+	while (text[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
-void	free_array(char **p, int n)
+void	free_text(char **text)
 {
-	while (n > 0)
-		free(p[--n]);
-}
+	int	i;
 
-void	*close_file_return_null(int fd)
-{
-	close(fd);
-	return (NULL);
+	if (! text)
+		return ;
+	i = 0;
+	while (text[i])
+	{
+		free(text[i++]);
+	}
+	free(text);
 }

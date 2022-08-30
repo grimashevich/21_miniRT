@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <sys/fcntl.h>
 # include <unistd.h>
-# include "so_long.h"
+# include "minirt.h"
 
 char			*get_next_line(int fd);
 char			*ft_strjoin2(char *s1, char *s2, char *nl);
