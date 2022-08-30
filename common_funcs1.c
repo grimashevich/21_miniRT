@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:18 by eclown            #+#    #+#             */
-/*   Updated: 2022/08/30 19:00:20 by eclown           ###   ########.fr       */
+/*   Updated: 2022/08/30 19:03:47 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ double	ft_atod(char *str)
 {
  	double	result;
 	int		part1;
-	int		part2;
-	double	mp;
+	double	part2;
 	char	**splits;
 
 	splits = ft_split_new(str, '.');
@@ -43,11 +42,13 @@ double	ft_atod(char *str)
 	}
 	part1 = ft_atoi(splits[0]);
 	if (text_len(splits) == 2)
+	{
 		part2 = ft_atoi(splits[1]);
+		part2 =  part2 / ft_ipow(10, ft_strlen(splits[1]));
+	}
 	else
 		part2 = 0;
-	mp = (double) part2 / ft_ipow(10, ft_strlen(splits[1]));
-	result = (double) part1 + mp;
+	result = (double) part1 + part2;
 	free_text(splits);
 	return (result);
 }
