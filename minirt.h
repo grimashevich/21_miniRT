@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/08/30 19:01:01 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/07 17:45:30 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include	<sys/fcntl.h>
 # include	"mlx/mlx.h"
 # include	"mlx/mlx_png.h"
+# include	"get_next_line.h"
 
 typedef struct s_scr {
 	void		*mlx;
@@ -81,13 +82,13 @@ typedef struct s_object
 	void			*data;
 }   t_object;
 
-typedef struct s_scene //TODO Check it
+typedef struct s_scene
 {
 	char		*description;
 	t_alight	alight;
 	t_camera	camera;
-	t_light	    *lights;
-	t_object	*objects;
+	t_light	    **lights;
+	t_object	**objects;
 }	t_scene;
 
 

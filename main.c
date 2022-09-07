@@ -35,20 +35,7 @@ t_scr *scr_init()
 void	sandbox()
 {
 	double x = 5;
-
-	x /= 10;
-	x /= 10;
-	x /= 10;
-	x /= 10;
-	x /= 10;
-	x /= 10;
-	x /= 10;
-	x /= 10;
-	x /= 10;
-	x /= 10;
-
-	ft_atof("00.05");
-	ft_atod("00.05");
+	
 }
 
 
