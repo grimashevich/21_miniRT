@@ -52,3 +52,29 @@ double	ft_atod(char *str)
 	free_text(splits);
 	return (result);
 }
+
+float	ft_atof(char *str)
+{
+ 	float	result;
+	int		part1;
+	float	part2;
+	char	**splits;
+
+	splits = ft_split_new(str, '.');
+	if (text_len(splits) > 2)
+	{
+		free_text(splits);
+		return (0);
+	}
+	part1 = ft_atoi(splits[0]);
+	if (text_len(splits) == 2)
+	{
+		part2 = ft_atoi(splits[1]);
+		part2 =  part2 / (float) ft_ipow(10, ft_strlen(splits[1]));
+	}
+	else
+		part2 = 0;
+	result = (float) part1 + part2;
+	free_text(splits);
+	return (result);
+}
