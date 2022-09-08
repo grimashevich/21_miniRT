@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/07 17:45:30 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/08 20:41:12 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,31 +54,28 @@ typedef struct s_coord
 typedef struct s_alight
 {
 	double  ratio;
-	t_TRGB  color;
+	t_TRGB  *color;
 }   t_alight;
-
 
 typedef struct s_camera
 {
-	t_coord		 	view_point;
-	t_coord		 	vector;
+	t_coord		 	*view_point;
+	t_coord		 	*vector;
 	unsigned int	FOV;
 }   t_camera;
 
-
 typedef struct s_light
 {
-	t_coord		 	light_point;
-	t_coord		 	brightness;
-	t_TRGB 			color;
+	t_coord		 	*light_point;
+	float		 	brightness;
+	t_TRGB 			*color;
 }   t_light;
-
 
 typedef struct s_object
 {
 	enum obj_type	type;
-	t_coord		 	coord;
-	t_TRGB 			color;
+	t_coord		 	*coord;
+	t_TRGB 			*color;
 	void			*data;
 }   t_object;
 
@@ -91,7 +88,7 @@ typedef struct s_scene
 	t_object	**objects;
 }	t_scene;
 
-
+void	exit_error(char *msg);
 char	**ft_split_new(char *str, char sep);
 int		text_len(char **text);
 void	free_text(char **text);

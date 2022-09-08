@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   common_funcs0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: EClown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:32:58 by eclown            #+#    #+#             */
-/*   Updated: 2022/01/29 21:22:40 by EClown           ###   ########.fr       */
+/*   Updated: 2022/09/08 20:25:40 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	exit_error(char *msg)
+{
+	ft_putstr_fd("Fatal error: ", 2);
+	if (msg != NULL)
+		ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
+	exit(1);
+}
 
 char	*get_trim_str(char *s1, char const *set)
 {
