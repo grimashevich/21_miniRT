@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/08 20:41:12 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/09 18:55:13 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_coord
 
 typedef struct s_alight
 {
-	double  ratio;
+	float  ratio;
 	t_TRGB  *color;
 }   t_alight;
 
@@ -79,6 +79,26 @@ typedef struct s_object
 	void			*data;
 }   t_object;
 
+typedef struct s_sphere_data
+{
+	float	diameter;
+	//TODO pointer to calc function	
+}   t_sphere_data;
+
+typedef struct s_plane_data
+{
+	t_coord	*vector;
+	//TODO pointer to calc function	
+}   t_plane_data;
+
+typedef struct s_cylinder_data
+{
+	float	diameter;
+	float	height;
+	t_coord	*vector;
+	//TODO pointer to calc function	
+}   t_cylinder_data;
+
 typedef struct s_scene
 {
 	char		*description;
@@ -95,5 +115,6 @@ void	free_text(char **text);
 int		ft_num_len(int n);
 double	ft_atod(char *str);
 float	ft_atof(char *str);
+void	replace_space_chars_to_space(char *str);
 
 #endif

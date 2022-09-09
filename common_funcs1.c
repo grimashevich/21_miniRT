@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:18 by eclown            #+#    #+#             */
-/*   Updated: 2022/08/30 19:03:47 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/09 18:52:47 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_ipow(int base, int pow)
 	}
 	return (base);
 }
-
 
 double	ft_atod(char *str)
 {
@@ -77,4 +76,23 @@ float	ft_atof(char *str)
 	result = (float) part1 + part2;
 	free_text(splits);
 	return (result);
+}
+
+int	ft_is_spc(char c)
+{
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
+}
+
+void replace_space_chars_to_space(char *str)
+{
+	int	i;
+
+	while (str[i])
+	{
+		if (ft_is_spc(str[i]))
+			str[i] = 32;
+		i++;
+	}
 }

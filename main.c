@@ -6,11 +6,9 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
-/*   Updated: 2022/08/30 19:05:25 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/09 16:07:59 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "minirt.h"
 
@@ -32,9 +30,8 @@ t_scr *scr_init()
 	return (screen);
 }
 
-void	sandbox()
+void	sandbox(void)
 {
-	double x = 5;
 	
 }
 
