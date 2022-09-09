@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/09 19:25:11 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/09 20:31:31 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_sphere_data *create_sphere_data(float	diameter);
 t_plane_data *create_plane_data(t_coord	*vector);
 t_cylinder_data *create_cylinder_data(float diam, float h, t_coord *vector);
-
+t_TRGB	*parse_color(char *str);
 
 int check_scene_file_extension(char *filename)
 {
@@ -62,8 +62,13 @@ t_object	*create_object(enum obj_type type, t_coord *coord, t_TRGB *color, void 
 	return (obj);
 }
 
-t_alight	*parse_alight(char *str)
+/* t_alight	*parse_alight(char *str)
 {
+	char	**bloks;
+	int		i;
+
 	replace_space_chars_to_space(str);
-	
-}
+	bloks = ft_split_new(str, ' ');
+
+	free_text(bloks);
+} */

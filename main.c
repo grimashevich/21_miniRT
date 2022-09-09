@@ -6,11 +6,14 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/09 16:07:59 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/09 20:53:55 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_TRGB	*parse_color(char *str);
+t_TRGB	*parse_coord(char *str);
 
 int	get_trgb(int t, int r, int g, int b)
 {
@@ -32,7 +35,7 @@ t_scr *scr_init()
 
 void	sandbox(void)
 {
-	
+	parse_coord("200.5,256.0,-3");
 }
 
 

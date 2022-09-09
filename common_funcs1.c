@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:18 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/09 18:52:47 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/09 20:31:15 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void replace_space_chars_to_space(char *str)
 {
 	int	i;
 
+	i = 0;
 	while (str[i])
 	{
 		if (ft_is_spc(str[i]))
