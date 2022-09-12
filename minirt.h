@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/09 19:41:55 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/12 16:55:36 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include	"mlx/mlx.h"
 # include	"mlx/mlx_png.h"
 # include	"get_next_line.h"
+#include	"limits.h"
 
 typedef struct s_scr {
 	void		*mlx;

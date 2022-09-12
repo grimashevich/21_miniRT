@@ -1,6 +1,14 @@
 {
 	"files.associations": {
 		"push_swap.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"get_next_line.h": "c",
+		"limits.h": "c",
+		"syslimits.h": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"climits": "c",
+		"ratio": "c",
+		"vector": "c"
 	}
 }
