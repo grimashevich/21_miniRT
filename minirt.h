@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/12 16:55:36 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/12 20:21:20 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,10 @@ double	ft_atod(char *str);
 float	ft_atof(char *str);
 void	replace_space_chars_to_space(char *str);
 void	free_text(char **text);
+int	ft_is_integer(char *str);
+int ft_is_float(char *str);
+int	is_all_float(char **text);
+int	is_all_pos_int (char **text);
+t_alight	*parse_alight(char *str);
 
 #endif

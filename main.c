@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/09 20:53:55 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/12 20:30:52 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,21 @@ t_scr *scr_init()
 
 void	sandbox(void)
 {
-	parse_coord("200.5,256.0,-3");
+	t_alight *alight = parse_alight("A 0.2 255,255,255");
+	(void) alight;
+	t_alight *alight1 = parse_alight("A .5 255,255,255");
+	t_alight *alight2 = parse_alight("A 0.2 255,255,255");
+	t_alight *alight3 = parse_alight("A 0.2 255,255,255");
+	t_alight *alight4 = parse_alight("A 0.2 255,255,255");
+	t_alight *alight5 = parse_alight("A 0.2 255,255,255");
+	t_alight *alight6 = parse_alight("A 0.2 255,255,255");
+	(void) alight1;
+	(void) alight2;
+	(void) alight3;
+	(void) alight4;
+	(void) alight5;
+	(void) alight6;
+	return;
 }
 
 

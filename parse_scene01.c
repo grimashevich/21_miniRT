@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/12 16:55:13 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/12 20:12:53 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 t_sphere_data *create_sphere_data(float	diameter);
 t_plane_data *create_plane_data(t_coord	*vector);
 t_cylinder_data *create_cylinder_data(float diam, float h, t_coord *vector);
-t_TRGB	*parse_color(char *str);
-t_coord	*parse_coord(char *str);
-
-void	*file_format_error(char *str_err)
-{
-	ft_putstr_fd("Scene file format error: ", 2);
-	ft_putstr_fd(str_err, 2);
-	ft_putstr_fd("\n", 2);
-	return (NULL);
-}
 
 int check_scene_file_extension(char *filename)
 {
@@ -69,26 +59,4 @@ t_object	*create_object(enum obj_type type, t_coord *coord, t_TRGB *color, void 
 	obj->color = color;
 	obj->data = data;
 	return (obj);
-}
-
-t_alight	*parse_alight(char *str)
-{
-	char		**bloks;
-	t_alight	*alight;
-	t_TRGB		*color;
-
-	replace_space_chars_to_space(str);
-	bloks = ft_split_new(str, ' ');
-	if (text_len(bloks) != 3)
-		return (file_format_error("Ambient lightning wrong args count"));
-	//TODO написать is_float
-	color = parse_color(bloks[2]);
-
-	alight = malloc(sizeof(t_alight));
-	if (! alight)
-		exit_error("malloc error in parse_alight");
-	
-
-
-	free_text(bloks);
 }

@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:07:54 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/09 20:57:01 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/12 20:23:18 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_TRGB	*parse_color(char *str)
 		return (NULL);
 	params = ft_split_new(str, ',');
 	count = text_len(params);
-	if (count > 4 || count < 3)
+	if (count > 4 || count < 3 || ! is_all_pos_int(params))
 	{
 		free_text(params);
 		return (NULL);
@@ -96,7 +96,7 @@ t_coord	*parse_coord(char *str)
 		return (NULL);
 	params = ft_split_new(str, ',');
 	count = text_len(params);
-	if (count != 3)
+	if (count != 3 || ! is_all_float(params))
 	{
 		free_text(params);
 		return (NULL);
