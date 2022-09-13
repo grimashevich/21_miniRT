@@ -5,58 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/12 20:12:53 by eclown           ###   ########.fr       */
+/*   Created: 2022/09/09 13:51:29 by eclown            #+#    #+#             */
+/*   Updated: 2022/09/13 18:10:08 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_sphere_data *create_sphere_data(float	diameter);
-t_plane_data *create_plane_data(t_coord	*vector);
-t_cylinder_data *create_cylinder_data(float diam, float h, t_coord *vector);
-
-int check_scene_file_extension(char *filename)
+t_alight	*create_alight(float ratio, t_TRGB *color)
 {
-	int strlen = ft_strlen(filename);
+	t_alight	*alight;
 
-	if (filename[strlen - 1] != 't' || filename[strlen - 2] != 'r')
-	   return (0);
-	if (filename[strlen - 3] != '.')
-	   return (0);
-	return (1);
+	alight = malloc(sizeof(t_alight));
+	if (! alight)
+		exit_error("malloc error in create_alight");
+	alight->ratio = ratio;
+	alight->color = color;
+	return (alight);
 }
 
-t_scene *parse_t_scene(char *filename)
+t_coord	*create_coord(float x, float y, float z)
 {
-	int fd;
+	t_coord	*coord;
 
-	if (check_scene_file_extension(filename) == 0)
-	{
-	   ft_putstr_fd("Incorrect scene filename\n", 2);
-	   return (NULL);
-	}
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-	   ft_putstr_fd("Error open file ", 2);
-	   ft_putstr_fd(filename, 2);
-	   ft_putstr_fd("n", 2);
-	   return (NULL);
-	}
-	return (NULL); //FIXME
+	coord = malloc(sizeof(t_coord));
+	if (! coord)
+		exit_error("malloc error in create_coord");
+	coord->x = x;
+	coord->y = y;
+	coord->z = z;
+	return (coord);
+}
+t_TRGB	*create_TRGB(int transp, int r, int g, int b)
+{
+	t_TRGB	*rgb;
+	
+	rgb = malloc(sizeof(t_TRGB));
+	if (! rgb)
+		exit_error("malloc error in create_TRGB");
+	rgb->transp = transp;
+	rgb->R = r;
+	rgb->G = g;
+	rgb->B = b;
+	return (rgb);
 }
 
-t_object	*create_object(enum obj_type type, t_coord *coord, t_TRGB *color, void *data)
+void add_light_to_array(t_light ***array, t_light *new_light)
 {
-	t_object	*obj;
+	t_light **new_array;
+	t_light **old_array;
+	int	i;
 
-	obj = malloc(sizeof(obj));
-	if (! obj)
-		exit_error("malloc error in create_object");
-	obj->type = type;
-	obj->coord = coord;
-	obj->color = color;
-	obj->data = data;
-	return (obj);
+	old_array = *array;
+	i = 0;
+	while (old_array[i])
+	   i++;
+	new_array = malloc(sizeof(t_light *) * (i + 2));
+	if (! new_array)
+		exit_error("malloc error in add_light_to_array");
+	while (old_array[i])
+	{
+	   new_array[i] = old_array[i];
+	   i++;
+	}
+	new_array[i++] = new_light;
+	new_array[i] = NULL;
+	i = 0;
+	if (old_array != NULL)
+		free(old_array);
+	*array = new_array;
+}
+
+t_light *create_light(t_coord *point, float brightness, t_TRGB *color)
+{
+	t_light *light;
+
+	light = malloc(sizeof(t_light));
+	if (! light)
+		exit_error("malloc error in create_light");
+	light->light_point = point;
+	light->brightness = brightness;
+	if (color != NULL)
+		light->color = color;
+	else
+		light->color = NULL;
+	return (light);
 }

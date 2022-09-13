@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:32:58 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/08 20:25:40 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/13 17:58:43 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	text_len(char **text)
 {
 	int	i;
 
+	if (text == NULL)
+		return (0);
 	i = 0;
 	while (text[i])
 	{

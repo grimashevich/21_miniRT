@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/12 20:21:20 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/13 19:30:26 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,19 +109,20 @@ typedef struct s_scene
 	t_object	**objects;
 }	t_scene;
 
-void	exit_error(char *msg);
-char	**ft_split_new(char *str, char sep);
-int		text_len(char **text);
-void	free_text(char **text);
-int		ft_num_len(int n);
-double	ft_atod(char *str);
-float	ft_atof(char *str);
-void	replace_space_chars_to_space(char *str);
-void	free_text(char **text);
-int	ft_is_integer(char *str);
-int ft_is_float(char *str);
-int	is_all_float(char **text);
-int	is_all_pos_int (char **text);
+void		exit_error(char *msg);
+char		**ft_split_new(char *str, char sep);
+int			text_len(char **text);
+void		free_text(char **text);
+int			ft_num_len(int n);
+double		ft_atod(char *str);
+float		ft_atof(char *str);
+void		replace_space_chars_to_space(char *str);
+void		free_text(char **text);
+int			ft_is_integer(char *str);
+int 		ft_is_float(char *str);
+int			is_all_float(char **text);
+int			is_all_pos_int (char **text);
 t_alight	*parse_alight(char *str);
+void		*file_format_error(char *str_err);
 
 #endif

@@ -5,103 +5,109 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 16:07:54 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/12 20:23:18 by eclown           ###   ########.fr       */
+/*   Created: 2022/09/12 20:07:06 by eclown            #+#    #+#             */
+/*   Updated: 2022/09/13 20:25:11 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_TRGB	*create_TRGB(int transp, int r, int g, int b);
-t_coord	*create_coord(float x, float y, float z);
+t_TRGB		*parse_color(char *str);
+t_coord		*parse_coord(char *str);
+t_alight	*create_alight(float ratio, t_TRGB *color);
+t_coord		*create_coord(float x, float y, float z);
+t_camera	*create_camera(t_coord *vp, t_coord *vector, int fov);
+t_coord		*parse_norm_vector(char *str);
 
-t_sphere_data	*create_sphere_data(float diameter)
+void	*file_format_error(char *str_err)
 {
-	t_sphere_data	*data;
-
-	data = malloc(sizeof(t_sphere_data));
-	if (! data)
-		exit_error("malloc error in create_sphere_data");
-	data->diameter = diameter;
-	return (data);
+	ft_putstr_fd("Scene file format error: ", 2);
+	ft_putstr_fd(str_err, 2);
+	ft_putstr_fd("\n", 2);
+	return (NULL);
 }
 
-t_plane_data	*create_plane_data(t_coord	*vector)
-{
-	t_plane_data	*data;
-
-	data = malloc(sizeof(t_plane_data));
-	if (! data)
-		exit_error("malloc error in create_plane_data");
-	data->vector = vector;
-	return (data);
-}
-
-t_cylinder_data	*create_cylinder_data(float diam, float h, t_coord *vector)
-{
-	t_cylinder_data	*data;
-
-	data = malloc(sizeof(t_cylinder_data));
-	if (! data)
-		exit_error("malloc error in create_cylinder_data");
-	data->diameter = diam;
-	data->vector = vector;
-	data->height = h;
-	return (data);
-}
-
-/* 
-str: str with 3 or 4 integers separated by comma
-ex: 0,5,100,35
-*/
-t_TRGB	*parse_color(char *str)
+int	check_alight_args(char **args)
 {
 	t_TRGB	*color;
-	char	**params;
-	int		count;
-	int		transp;
+	float	ratio;
 
-	if (str == NULL)
-		return (NULL);
-	params = ft_split_new(str, ',');
-	count = text_len(params);
-	if (count > 4 || count < 3 || ! is_all_pos_int(params))
-	{
-		free_text(params);
-		return (NULL);
-	}
-	transp = 0;
-	if (count == 4)
-		transp = (int)(unsigned char) ft_atoi(params[0]);
-	color = create_TRGB(transp, ft_atoi(params[count - 3]),
-			ft_atoi(params[count - 2]), ft_atoi(params[count - 1]));
-	color->R = (int)(unsigned char) color->R;
-	color->G = (int)(unsigned char) color->G;
-	color->B = (int)(unsigned char) color->B;
-	free_text(params);
-	return (color);
+	if (text_len(args) != 3)
+		return (0);
+	if (! ft_is_float(args[1]))
+		return (0);
+	ratio = ft_atof(args[1]);
+	if (ratio < 0 || ratio > 1)
+		return (0);
+	color = parse_color(args[2]);
+	if (color == NULL)
+		return (0);
+	free(color);
+	return (1);
 }
 
-/* 
-str: str with 3 or 4 integers separated by comma
-ex: 0.5,5.15,-100,35
-*/
-t_coord	*parse_coord(char *str)
+t_alight	*parse_alight(char *str)
+{
+	char		**bloks;
+	t_alight	*alight;
+
+	str = ft_strdup(str);
+	replace_space_chars_to_space(str);
+	bloks = ft_split_new(str, ' ');
+	if (check_alight_args(bloks) == 0)
+	{
+		free_text(bloks);
+		free(str);
+		return (file_format_error("Ambient lightning wrong args"));
+	}
+	alight = create_alight(ft_atof(bloks[1]), parse_color(bloks[2]));
+	free_text(bloks);
+	free(str);
+	return (alight);
+}
+
+int	check_camera_args(char **args)
 {
 	t_coord	*coord;
-	char	**params;
-	int		count;
+	int		fov;
 
-	if (str == NULL)
-		return (NULL);
-	params = ft_split_new(str, ',');
-	count = text_len(params);
-	if (count != 3 || ! is_all_float(params))
+	if (text_len(args) != 4)
+		return (0);
+	if (! ft_is_integer(args[3]))
+		return (0);
+	fov = ft_atoi(args[3]);
+	if (fov < 0 || fov > 180)
+		return (0);
+	coord = parse_coord(args[1]);
+	if (coord == NULL)
+		return (0);
+	free(coord);
+	coord = parse_norm_vector(args[2]);
+	if (coord == NULL)
+		return (0);
+	free(coord);
+	return (1);
+}
+
+t_camera	*parse_camera(char *str)
+{
+	char		**bloks;
+	t_camera	*camera;
+
+	str = ft_strdup(str);
+	replace_space_chars_to_space(str);
+	bloks = ft_split_new(str, ' ');
+	if (check_camera_args(bloks) == 0)
 	{
-		free_text(params);
-		return (NULL);
+		free_text(bloks);
+		free(str);
+		return (file_format_error("Ambient lightning wrong args"));
 	}
-	coord = create_coord(ft_atof(params[0]), ft_atof(params[1]), ft_atof(params[2]));
-	free_text(params);
-	return (coord);
+	camera = create_camera(
+		parse_coord(bloks[1]),
+		parse_coord(bloks[2]),
+		ft_atod(bloks[3]));
+	free_text(bloks);
+	free(str);
+	return (camera);
 }
