@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:45:06 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/13 19:21:18 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/15 19:13:57 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	check_light_args(char **args)
 
 t_light	*parse_light(char *str)
 {
-	char		**bloks;
+	char	**bloks;
 	t_light	*light;
-	t_TRGB		*color;
+	t_TRGB	*color;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);

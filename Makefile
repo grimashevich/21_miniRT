@@ -21,7 +21,7 @@ LDLIBS := -lft
 SRC_COMMON := 	get_next_line.c		get_next_line_utils.c	ft_split_new.c		ft_strjoin3.c	\
 				common_funcs0.c		common_funcs1.c			common_funcs2.c						\
 				parse_scene00.c		parse_scene01.c			parse_scene02.c		parse_scene03.c	\
-				parse_scene04.c
+				parse_scene04.c		parse_scene05.c			parse_scene06.c
 				
 SRC := 			$(SRC_COMMON)		main.c
 
