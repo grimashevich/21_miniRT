@@ -6,12 +6,16 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/16 14:50:28 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/16 16:40:31 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+# ifndef IS_BONUS
+#  define IS_BONUS_PART 1
+# endif
 
 # include	"libft/libft.h"
 # include	<stddef.h>
@@ -122,7 +126,6 @@ int			ft_is_integer(char *str);
 int 		ft_is_float(char *str);
 int			is_all_float(char **text);
 int			is_all_pos_int (char **text);
-t_alight	*parse_alight(char *str);
 void		*file_format_error(char *str_err);
 
 #endif

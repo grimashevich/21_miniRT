@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/16 15:24:58 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/16 17:00:15 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,44 +20,84 @@ int				check_norm_vector(t_coord *vector);
 void			*error_open_file(char *filename);
 t_scene 		*init_scene(void);
 void			add_light_to_array(t_light ***array, t_light *new_light);
+t_alight		*parse_alight(char *str);
+t_light			*parse_light(char *str);
+t_camera		*parse_camera(char *str);
 
-int	add_alight_to_scene(t_scene *scene, char *str, int str_num)
+int	parse_error(int line_num, char *str)
+{
+	ft_putstr_fd("Parsing error in line ", 2);
+	ft_putstr_fd(ft_itoa(str), 2);
+	ft_putstr_fd(". ", 2);
+	ft_putstr_fd(str, 2);
+	return (1);
+}
+
+int	add_alight_to_scene(t_scene *scene, char *str, int line_num)
 {
 	if (scene->alight)
 	{
 		free(str);
-		return (1);
+			return (parse_error(line_num, "There is second ambient light in scene."));
 	}
+	scene->alight = parse_alight(str);
 	free(str);
+	if (scene->alight == NULL)
+		return (parse_error(line_num, "Ambient light parse error"));
+	return (0);	
 }
 
-int	add_light_to_scene(t_scene *scene, char *str, int str_num)
+static int	get_light_count(t_light	**lights)
 {
-	if (scene->lights)
+	int	i;
+
+	if (lights == NULL)
+		return (0);
+	while (lights[i])
+		i++;
+	return (i);
+}
+
+int	add_light_to_scene(t_scene *scene, char *str, int line_num)
+{
+	int	lights_count;
+
+	lights_count = get_light_count(scene->lights);
+	if (IS_BONUS_PART == 0 && lights_count > 0)
 	{
 		free(str);
-		return (1);
+		return (parse_error(line_num, "There is second light in scene."));
 	}
+	add_light_to_array(&(scene->lights), parse_light(str));
 	free(str);
+	if (lights_count == get_light_count(scene->lights))
+		return (parse_error(line_num, "Light parse error"));
+	return (0);
 }
 
-int	add_camera_to_scene(t_scene *scene, char *str, int str_num)
+int	add_camera_to_scene(t_scene *scene, char *str, int line_num)
 {
 	if (scene->camera)
 	{
 		free(str);
-		return (1);
+		return (parse_error(line_num, "There is second camera in scene."));
+
 	}
+	scene->camera  = parse_camera(str);
 	free(str);
+	if (scene->camera == NULL)
+		return (parse_error(line_num, "Camera parse error"));
+	return (0);
 }
 
-int	add_object_to_scene(t_scene *scene, char *str, int str_num)
+int	add_object_to_scene(t_scene *scene, char *str, int line_num)
 {
 	
 	free(str);
+	//TODO HERE
 }
 
-int	parse_str_scene(t_scene *scene, char *str, int str_num)
+int	parse_str_scene(t_scene *scene, char *str, int line_num)
 {
 	str = ft_strtrim(str, " \t\n");
 	if (str[0] == 'A' && ft_is_spc(str[1]))
@@ -86,6 +126,7 @@ int	parse_str_scene(t_scene *scene, char *str, int str_num)
 	}	
 	free(str);
 	return (0);
+	//TODO and HERE
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - */
