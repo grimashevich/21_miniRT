@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 15:36:48 by EClown            #+#    #+#             */
-/*   Updated: 2022/08/30 20:11:00 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/16 14:59:00 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <sys/fcntl.h>
 # include <unistd.h>
-# include "minirt.h"
+# include "libft/libft.h"
 
 char			*get_next_line(int fd);
 char			*ft_strjoin2(char *s1, char *s2, char *nl);

@@ -6,14 +6,14 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:45:06 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/15 19:13:57 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/16 14:16:08 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_TRGB		*parse_color(char *str);
-t_coord		*parse_coord(char *str);
+t_TRGB	*parse_color(char *str);
+t_coord	*parse_coord(char *str);
 t_light *create_light(t_coord *point, float brightness, t_TRGB *color);
 
 int	check_light_args(char **args)
@@ -81,4 +81,12 @@ int	check_norm_vector(t_coord *vector)
 	if (vector->z < -1 || vector->z > 1)
 		return (0);
 	return (1);
+}
+
+void	*error_open_file(char *filename)
+{
+	ft_putstr_fd("Error open file ", 2);
+	ft_putstr_fd(filename, 2);
+	ft_putstr_fd("n", 2);
+	return (NULL);
 }

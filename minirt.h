@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/13 19:30:26 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/16 14:50:28 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include	"mlx/mlx.h"
 # include	"mlx/mlx_png.h"
 # include	"get_next_line.h"
-#include	"limits.h"
 
 typedef struct s_scr {
 	void		*mlx;
@@ -103,8 +102,8 @@ typedef struct s_cylinder_data
 typedef struct s_scene
 {
 	char		*description;
-	t_alight	alight;
-	t_camera	camera;
+	t_alight	*alight;
+	t_camera	*camera;
 	t_light	    **lights;
 	t_object	**objects;
 }	t_scene;
@@ -112,6 +111,7 @@ typedef struct s_scene
 void		exit_error(char *msg);
 char		**ft_split_new(char *str, char sep);
 int			text_len(char **text);
+int			ft_is_spc(char c);
 void		free_text(char **text);
 int			ft_num_len(int n);
 double		ft_atod(char *str);

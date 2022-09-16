@@ -9,6 +9,7 @@
 		"chrono": "c",
 		"climits": "c",
 		"ratio": "c",
-		"vector": "c"
+		"vector": "c",
+		"sstream": "c"
 	}
 }

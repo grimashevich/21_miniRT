@@ -6,18 +6,89 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/13 20:00:26 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/16 15:24:58 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_sphere_data *create_sphere_data(float	diameter);
-t_plane_data *create_plane_data(t_coord	*vector);
-t_cylinder_data *create_cylinder_data(float diam, float h, t_coord *vector);
-t_coord		*parse_coord(char *str);
-int	check_norm_vector(t_coord *vector);
+t_sphere_data	*create_sphere_data(float	diameter);
+t_plane_data	*create_plane_data(t_coord	*vector);
+t_cylinder_data	*create_cylinder_data(float diam, float h, t_coord *vector);
+t_coord			*parse_coord(char *str);
+int				check_norm_vector(t_coord *vector);
+void			*error_open_file(char *filename);
+t_scene 		*init_scene(void);
+void			add_light_to_array(t_light ***array, t_light *new_light);
 
+int	add_alight_to_scene(t_scene *scene, char *str, int str_num)
+{
+	if (scene->alight)
+	{
+		free(str);
+		return (1);
+	}
+	free(str);
+}
+
+int	add_light_to_scene(t_scene *scene, char *str, int str_num)
+{
+	if (scene->lights)
+	{
+		free(str);
+		return (1);
+	}
+	free(str);
+}
+
+int	add_camera_to_scene(t_scene *scene, char *str, int str_num)
+{
+	if (scene->camera)
+	{
+		free(str);
+		return (1);
+	}
+	free(str);
+}
+
+int	add_object_to_scene(t_scene *scene, char *str, int str_num)
+{
+	
+	free(str);
+}
+
+int	parse_str_scene(t_scene *scene, char *str, int str_num)
+{
+	str = ft_strtrim(str, " \t\n");
+	if (str[0] == 'A' && ft_is_spc(str[1]))
+	{
+		
+	}
+	else if (str[0] == 'C' && ft_is_spc(str[1]))
+	{
+		
+	}
+	else if (str[0] == 'L' && ft_is_spc(str[1]))
+	{
+		
+	}
+	else if (str[0] == 'L' && ft_is_spc(str[1]))
+	{
+		
+	}
+	else if (str[0] == 'L' && ft_is_spc(str[1]))
+	{
+		
+	}
+	else if (str[0] == 'L' && ft_is_spc(str[1]))
+	{
+		
+	}	
+	free(str);
+	return (0);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 int check_scene_file_extension(char *filename)
 {
@@ -30,9 +101,10 @@ int check_scene_file_extension(char *filename)
 	return (1);
 }
 
-t_scene *parse_t_scene(char *filename)
+t_scene *parse_scene(char *filename)
 {
-	int fd;
+	int		fd;
+	char	*str;
 
 	if (check_scene_file_extension(filename) == 0)
 	{
@@ -41,13 +113,16 @@ t_scene *parse_t_scene(char *filename)
 	}
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
+	   return (error_open_file(filename));
+	str = get_next_line(fd);
+	while (str)
 	{
-	   ft_putstr_fd("Error open file ", 2);
-	   ft_putstr_fd(filename, 2);
-	   ft_putstr_fd("n", 2);
-	   return (NULL);
+		(void) str;
+		free(str);
+		str = get_next_line(fd);
 	}
-	return (NULL); //FIXME
+	
+	return (NULL);
 }
 
 t_object	*create_object(enum obj_type type, t_coord *coord, t_TRGB *color, void *data)
