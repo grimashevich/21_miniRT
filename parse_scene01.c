@@ -6,11 +6,13 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:51:29 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/13 18:10:08 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/19 13:53:58 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int	get_light_count(t_light	**lights);
 
 t_alight	*create_alight(float ratio, t_TRGB *color)
 {
@@ -57,20 +59,18 @@ void add_light_to_array(t_light ***array, t_light *new_light)
 	int	i;
 
 	old_array = *array;
-	i = 0;
-	while (old_array[i])
-	   i++;
+	i = get_light_count(old_array);
 	new_array = malloc(sizeof(t_light *) * (i + 2));
 	if (! new_array)
 		exit_error("malloc error in add_light_to_array");
-	while (old_array[i])
+	i = 0;
+	while (old_array && old_array[i])
 	{
 	   new_array[i] = old_array[i];
 	   i++;
 	}
 	new_array[i++] = new_light;
 	new_array[i] = NULL;
-	i = 0;
 	if (old_array != NULL)
 		free(old_array);
 	*array = new_array;

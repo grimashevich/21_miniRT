@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:45:06 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/16 14:16:08 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/19 13:31:44 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,9 @@ int	check_norm_vector(t_coord *vector)
 
 void	*error_open_file(char *filename)
 {
-	ft_putstr_fd("Error open file ", 2);
+	ft_putstr_fd("Error open file or file format is wrong: ", 2);
 	ft_putstr_fd(filename, 2);
-	ft_putstr_fd("n", 2);
+	ft_putstr_fd("\n", 2);
+	
 	return (NULL);
 }

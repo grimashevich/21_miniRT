@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/16 14:57:29 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/19 13:35:57 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_scr *scr_init()
 
 void	sandbox(void)
 {	
-		
 	parse_scene("test.rt");
 }
 
