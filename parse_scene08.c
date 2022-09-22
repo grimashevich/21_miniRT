@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:43:14 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/16 14:01:54 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/22 17:27:28 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void free_object(t_object *object)
 		free(object->data);
 	if (object->type == PLANE && object->data)
 		free_t_plane_data(object->data);
-	if (object->type == SPHERE && object->data)
+	if (object->type == CYLINDER && object->data)
 		free_t_cylinder_data(object->data);
 	free(object);
 }

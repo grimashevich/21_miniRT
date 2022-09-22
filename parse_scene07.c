@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:43:14 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/19 12:54:20 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/22 17:14:02 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	free_object_array(t_object **object_array)
 
 void	free_scene(t_scene *scene)
 {
+	if (! scene)
+		return;
 	if (scene->description)
 		free(scene->description);
 	if (scene->alight)

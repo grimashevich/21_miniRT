@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/19 13:56:28 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/22 17:29:41 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ int	add_object_to_scene(t_scene *scene, char *str, int line_num)
 	else
 		return (parse_error(line_num, "Wrong object indetifier"));
 	if (new_object == NULL)
-		return (parse_error(line_num, "Object parse error"));
+		return (parse_error(line_num, "Object parse error. "));
 	add_object_to_array(&(scene->objects), new_object);
 	//free(str);
 	return (0);
@@ -252,7 +252,7 @@ t_scene *parse_scene(char *filename)
 		str = get_next_line(fd);
 		line_num++;
 	}
-	return (NULL);
+	return (scene);
 }
 
 t_object	*create_object(enum obj_type type, t_coord *coord, t_TRGB *color, void *data)

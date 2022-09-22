@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/16 16:40:31 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/22 17:10:25 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,6 @@ int 		ft_is_float(char *str);
 int			is_all_float(char **text);
 int			is_all_pos_int (char **text);
 void		*file_format_error(char *str_err);
+void		free_scene(t_scene *scene);
 
 #endif

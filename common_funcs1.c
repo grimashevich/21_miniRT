@@ -6,12 +6,14 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:18 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/09 20:31:15 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/22 18:56:08 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "minirt.h"
+
+void	remove_dbl_space(char *str);
 
 int	ft_ipow(int base, int pow)
 {
@@ -87,7 +89,7 @@ int	ft_is_spc(char c)
 
 void replace_space_chars_to_space(char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -96,4 +98,5 @@ void replace_space_chars_to_space(char *str)
 			str[i] = 32;
 		i++;
 	}
+	remove_dbl_space(str);
 }

@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/19 13:35:57 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/22 19:50:53 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,20 @@ t_scr *scr_init()
 	return (screen);
 }
 
+void	remove_dbl_space(char **str);
+char	*get_file_name(char *str);
+
 void	sandbox(void)
 {	
-	parse_scene("test.rt");
+	char *str = ft_strdup("../folder/test.rt");
+	remove_dbl_space(&str);
+	char *fname = get_file_name(str);
+	printf("%s\n", fname);
+	return;
+	
+ 	t_scene *sc = parse_scene("test.rt");
+	(void) sc;
+	free_scene(sc);
 }
 
 

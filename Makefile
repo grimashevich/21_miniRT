@@ -19,7 +19,7 @@ LDLIBS := -lft
 
 
 SRC_COMMON := 	get_next_line.c		get_next_line_utils.c	ft_split_new.c		ft_strjoin3.c	\
-				common_funcs0.c		common_funcs1.c			common_funcs2.c						\
+				common_funcs0.c		common_funcs1.c			common_funcs2.c		common_funcs3.c	\
 				parse_scene00.c		parse_scene01.c			parse_scene02.c		parse_scene03.c	\
 				parse_scene04.c		parse_scene05.c			parse_scene06.c		parse_scene07.c	\
 				parse_scene08.c
@@ -41,13 +41,13 @@ all:	libft1 mlx1 $(NAME)
 bonus:	libft1 mlx1 $(NAME_B)
 
 $(NAME): $(LIBFT_LIB) $(MLX_LIB) $(OBJ)
-	$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -Lmlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address -o $(NAME)
+	$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(NAME_B): $(LIBFT_LIB) $(MLX_LIB) $(OBJ_B)
-	$(CC) $(LDFLAGS) $(OBJ_B) $(LDLIBS) -Lmlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address -o $(NAME_B)
+	$(CC) $(LDFLAGS) $(OBJ_B) $(LDLIBS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME_B)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -fsanitize=address -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS)  -c $< -o $@
 
 $(LIBFT_LIB): libft1
 
