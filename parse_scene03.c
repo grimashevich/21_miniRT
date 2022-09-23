@@ -6,15 +6,15 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:07:06 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/13 20:25:11 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:59:20 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_TRGB		*parse_color(char *str);
+t_trgb		*parse_color(char *str);
 t_coord		*parse_coord(char *str);
-t_alight	*create_alight(float ratio, t_TRGB *color);
+t_alight	*create_alight(float ratio, t_trgb *color);
 t_coord		*create_coord(float x, float y, float z);
 t_camera	*create_camera(t_coord *vp, t_coord *vector, int fov);
 t_coord		*parse_norm_vector(char *str);
@@ -29,7 +29,7 @@ void	*file_format_error(char *str_err)
 
 int	check_alight_args(char **args)
 {
-	t_TRGB	*color;
+	t_trgb	*color;
 	float	ratio;
 
 	if (text_len(args) != 3)
@@ -104,9 +104,9 @@ t_camera	*parse_camera(char *str)
 		return (file_format_error("Ambient lightning wrong args"));
 	}
 	camera = create_camera(
-		parse_coord(bloks[1]),
-		parse_coord(bloks[2]),
-		ft_atod(bloks[3]));
+			parse_coord(bloks[1]),
+			parse_coord(bloks[2]),
+			ft_atod(bloks[3]));
 	free_text(bloks);
 	free(str);
 	return (camera);

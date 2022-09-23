@@ -6,10 +6,9 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:18 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/22 18:56:08 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:48:27 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minirt.h"
 
@@ -30,7 +29,7 @@ int	ft_ipow(int base, int pow)
 
 double	ft_atod(char *str)
 {
- 	double	result;
+	double	result;
 	int		part1;
 	double	part2;
 	char	**splits;
@@ -45,7 +44,7 @@ double	ft_atod(char *str)
 	if (text_len(splits) == 2)
 	{
 		part2 = ft_atoi(splits[1]);
-		part2 =  part2 / ft_ipow(10, ft_strlen(splits[1]));
+		part2 = part2 / ft_ipow(10, ft_strlen(splits[1]));
 	}
 	else
 		part2 = 0;
@@ -56,7 +55,7 @@ double	ft_atod(char *str)
 
 float	ft_atof(char *str)
 {
- 	float	result;
+	float	result;
 	int		part1;
 	float	part2;
 	char	**splits;
@@ -71,7 +70,7 @@ float	ft_atof(char *str)
 	if (text_len(splits) == 2)
 	{
 		part2 = ft_atoi(splits[1]);
-		part2 =  part2 / (float) ft_ipow(10, ft_strlen(splits[1]));
+		part2 = part2 / (float) ft_ipow(10, ft_strlen(splits[1]));
 	}
 	else
 		part2 = 0;
@@ -87,7 +86,7 @@ int	ft_is_spc(char c)
 	return (0);
 }
 
-void replace_space_chars_to_space(char *str)
+void	replace_space_chars_to_space(char *str)
 {
 	int		i;
 

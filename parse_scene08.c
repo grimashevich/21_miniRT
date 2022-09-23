@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:43:14 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/22 17:27:28 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:45:52 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	free_t_plane_data(t_plane_data *data);
 void	free_t_cylinder_data(t_cylinder_data *data);
-void free_object(t_object *object);
+void	free_object(t_object *object);
 
 void	free_t_plane_data(t_plane_data *data)
 {
 	if (! data)
-		return;
+		return ;
 	if (data->vector)
 		free(data->vector);
 	free(data);
@@ -28,16 +28,16 @@ void	free_t_plane_data(t_plane_data *data)
 void	free_t_cylinder_data(t_cylinder_data *data)
 {
 	if (! data)
-		return;
+		return ;
 	if (data->vector)
 		free(data->vector);
 	free(data);
 }
 
-void free_object(t_object *object)
+void	free_object(t_object *object)
 {
 	if (! object)
-		return;
+		return ;
 	if (object->coord)
 		free(object->coord);
 	if (object->color)

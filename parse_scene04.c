@@ -6,19 +6,19 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:45:06 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/19 13:31:44 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:59:20 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_TRGB	*parse_color(char *str);
+t_trgb	*parse_color(char *str);
 t_coord	*parse_coord(char *str);
-t_light *create_light(t_coord *point, float brightness, t_TRGB *color);
+t_light	*create_light(t_coord *point, float brightness, t_trgb *color);
 
 int	check_light_args(char **args)
 {
-	t_TRGB	*color;
+	t_trgb	*color;
 	t_coord	*coord;
 	float	ratio;
 	int		args_count;
@@ -48,7 +48,7 @@ t_light	*parse_light(char *str)
 {
 	char	**bloks;
 	t_light	*light;
-	t_TRGB	*color;
+	t_trgb	*color;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);
@@ -64,9 +64,9 @@ t_light	*parse_light(char *str)
 	else
 		color = NULL;
 	light = create_light(
-		parse_coord(bloks[1]),
-		ft_atof(bloks[2]),
-		color);	
+			parse_coord(bloks[1]),
+			ft_atof(bloks[2]),
+			color);
 	free_text(bloks);
 	free(str);
 	return (light);
@@ -88,6 +88,5 @@ void	*error_open_file(char *filename)
 	ft_putstr_fd("Error open file or file format is wrong: ", 2);
 	ft_putstr_fd(filename, 2);
 	ft_putstr_fd("\n", 2);
-	
 	return (NULL);
 }

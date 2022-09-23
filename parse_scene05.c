@@ -6,20 +6,20 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:46:35 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/13 19:54:33 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:59:20 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_TRGB		*parse_color(char *str);
+t_trgb		*parse_color(char *str);
 t_coord		*parse_coord(char *str);
 t_coord		*parse_norm_vector(char *str);
 
 int	check_base_object_args(char **args)
 {
 	int		args_count;
-	t_TRGB	*color;
+	t_trgb	*color;
 	t_coord	*coord;
 
 	args_count = text_len(args);

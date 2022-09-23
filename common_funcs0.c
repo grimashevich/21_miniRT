@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:32:58 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/13 17:58:43 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:46:41 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	free_text(char **text)
 
 int	ft_num_len(int n)
 {
-	int res;
+	int	res;
 
 	if (n == 0)
 		return (1);
@@ -76,4 +76,3 @@ int	ft_num_len(int n)
 	}
 	return (n);
 }
-

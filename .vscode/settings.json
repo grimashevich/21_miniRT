@@ -10,6 +10,12 @@
 		"climits": "c",
 		"ratio": "c",
 		"vector": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"concepts": "c",
+		"functional": "c",
+		"type_traits": "c",
+		"*.tcc": "c",
+		"random": "c",
+		"limits": "c"
 	}
 }

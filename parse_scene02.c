@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_scene03.c                                    :+:      :+:    :+:   */
+/*   parse_scene02.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:07:54 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/12 20:23:18 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 17:02:09 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_TRGB	*create_TRGB(int transp, int r, int g, int b);
+t_trgb	*create_trgb(int transp, int r, int g, int b);
 t_coord	*create_coord(float x, float y, float z);
 
 t_sphere_data	*create_sphere_data(float diameter)
@@ -54,9 +54,9 @@ t_cylinder_data	*create_cylinder_data(float diam, float h, t_coord *vector)
 str: str with 3 or 4 integers separated by comma
 ex: 0,5,100,35
 */
-t_TRGB	*parse_color(char *str)
+t_trgb	*parse_color(char *str)
 {
-	t_TRGB	*color;
+	t_trgb	*color;
 	char	**params;
 	int		count;
 	int		transp;
@@ -73,11 +73,11 @@ t_TRGB	*parse_color(char *str)
 	transp = 0;
 	if (count == 4)
 		transp = (int)(unsigned char) ft_atoi(params[0]);
-	color = create_TRGB(transp, ft_atoi(params[count - 3]),
+	color = create_trgb(transp, ft_atoi(params[count - 3]),
 			ft_atoi(params[count - 2]), ft_atoi(params[count - 1]));
-	color->R = (int)(unsigned char) color->R;
-	color->G = (int)(unsigned char) color->G;
-	color->B = (int)(unsigned char) color->B;
+	color->r = (int)(unsigned char) color->r;
+	color->g = (int)(unsigned char) color->g;
+	color->b = (int)(unsigned char) color->b;
 	free_text(params);
 	return (color);
 }
@@ -101,7 +101,8 @@ t_coord	*parse_coord(char *str)
 		free_text(params);
 		return (NULL);
 	}
-	coord = create_coord(ft_atof(params[0]), ft_atof(params[1]), ft_atof(params[2]));
+	coord = create_coord(ft_atof(params[0]),
+			ft_atof(params[1]), ft_atof(params[2]));
 	free_text(params);
 	return (coord);
 }

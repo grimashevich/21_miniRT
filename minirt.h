@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/22 17:10:25 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 17:07:35 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,67 +33,67 @@ typedef struct s_scr {
 	int			size_y;
 }	t_scr;
 
-enum obj_type
+enum e_obj_type
 {
 	SPHERE,
 	PLANE,
 	CYLINDER
 };
 
-typedef struct s_TRGB
+typedef struct s_trgb
 {
-	int transp;
-	int R;
-	int G;
-	int B;
-}   t_TRGB;
+	int	transp;
+	int	r;
+	int	g;
+	int	b;
+}	t_trgb;
 
 typedef struct s_coord
 {
-	double  x;
-	double  y;
-	double  z;
-}   t_coord;
+	double	x;
+	double	y;
+	double	z;
+}	t_coord;
 
 typedef struct s_alight
 {
-	float  ratio;
-	t_TRGB  *color;
-}   t_alight;
+	float	ratio;
+	t_trgb	*color;
+}	t_alight;
 
 typedef struct s_camera
 {
-	t_coord		 	*view_point;
-	t_coord		 	*vector;
-	unsigned int	FOV;
-}   t_camera;
+	t_coord			*view_point;
+	t_coord			*vector;
+	unsigned int	fov;
+}	t_camera;
 
 typedef struct s_light
 {
-	t_coord		 	*light_point;
-	float		 	brightness;
-	t_TRGB 			*color;
-}   t_light;
+	t_coord	*light_point;
+	float	brightness;
+	t_trgb	*color;
+}	t_light;
 
 typedef struct s_object
 {
-	enum obj_type	type;
-	t_coord		 	*coord;
-	t_TRGB 			*color;
+	enum e_obj_type	type;
+	t_coord			*coord;
+	t_trgb			*color;
 	void			*data;
-}   t_object;
+}	t_object;
 
 typedef struct s_sphere_data
 {
 	float	diameter;
 	//TODO pointer to calc function	
-}   t_sphere_data;
+}	t_sphere_data;
 
 typedef struct s_plane_data
 {
 	t_coord	*vector;
 	//TODO pointer to calc function	
-}   t_plane_data;
+}	t_plane_data;
 
 typedef struct s_cylinder_data
 {
@@ -101,14 +101,14 @@ typedef struct s_cylinder_data
 	float	height;
 	t_coord	*vector;
 	//TODO pointer to calc function	
-}   t_cylinder_data;
+}	t_cylinder_data;
 
 typedef struct s_scene
 {
 	char		*description;
 	t_alight	*alight;
 	t_camera	*camera;
-	t_light	    **lights;
+	t_light		**lights;
 	t_object	**objects;
 }	t_scene;
 
@@ -123,9 +123,9 @@ float		ft_atof(char *str);
 void		replace_space_chars_to_space(char *str);
 void		free_text(char **text);
 int			ft_is_integer(char *str);
-int 		ft_is_float(char *str);
+int			ft_is_float(char *str);
 int			is_all_float(char **text);
-int			is_all_pos_int (char **text);
+int			is_all_pos_int(char **text);
 void		*file_format_error(char *str_err);
 void		free_scene(t_scene *scene);
 

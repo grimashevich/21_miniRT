@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:43:14 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/22 17:14:02 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:45:33 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	free_t_plane_data(t_plane_data *data);
 void	free_t_cylinder_data(t_cylinder_data *data);
-void free_object(t_object *object);
+void	free_object(t_object *object);
 
 void	free_alight(t_alight *alight)
 {
 	if (! alight)
-		return;
+		return ;
 	if (alight->color)
 		free(alight->color);
 	free(alight);
@@ -28,7 +28,7 @@ void	free_alight(t_alight *alight)
 void	free_camera(t_camera *camera)
 {
 	if (! camera)
-		return;
+		return ;
 	if (camera->view_point)
 		free(camera->view_point);
 	if (camera->vector)
@@ -41,12 +41,12 @@ void	free_light_array(t_light **light_array)
 	int	i;
 
 	if (! light_array)
-		return;
+		return ;
 	i = 0;
 	while (light_array[i])
 	{
 		if (! light_array[i])
-			return;
+			return ;
 		if (light_array[i]->color)
 			free(light_array[i]->color);
 		if (light_array[i]->light_point)
@@ -62,7 +62,7 @@ void	free_object_array(t_object **object_array)
 	int	i;
 
 	if (! object_array)
-		return;
+		return ;
 	i = 0;
 	while (object_array[i])
 		free_object(object_array[i++]);
@@ -72,7 +72,7 @@ void	free_object_array(t_object **object_array)
 void	free_scene(t_scene *scene)
 {
 	if (! scene)
-		return;
+		return ;
 	if (scene->description)
 		free(scene->description);
 	if (scene->alight)

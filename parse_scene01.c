@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:51:29 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/19 13:53:58 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 17:02:09 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_light_count(t_light	**lights);
 
-t_alight	*create_alight(float ratio, t_TRGB *color)
+t_alight	*create_alight(float ratio, t_trgb *color)
 {
 	t_alight	*alight;
 
@@ -38,25 +38,26 @@ t_coord	*create_coord(float x, float y, float z)
 	coord->z = z;
 	return (coord);
 }
-t_TRGB	*create_TRGB(int transp, int r, int g, int b)
+
+t_trgb	*create_trgb(int transp, int r, int g, int b)
 {
-	t_TRGB	*rgb;
-	
-	rgb = malloc(sizeof(t_TRGB));
+	t_trgb	*rgb;
+
+	rgb = malloc(sizeof(t_trgb));
 	if (! rgb)
-		exit_error("malloc error in create_TRGB");
+		exit_error("malloc error in create_trgb");
 	rgb->transp = transp;
-	rgb->R = r;
-	rgb->G = g;
-	rgb->B = b;
+	rgb->r = r;
+	rgb->g = g;
+	rgb->b = b;
 	return (rgb);
 }
 
-void add_light_to_array(t_light ***array, t_light *new_light)
+void	add_light_to_array(t_light ***array, t_light *new_light)
 {
-	t_light **new_array;
-	t_light **old_array;
-	int	i;
+	t_light	**new_array;
+	t_light	**old_array;
+	int		i;
 
 	old_array = *array;
 	i = get_light_count(old_array);
@@ -66,8 +67,8 @@ void add_light_to_array(t_light ***array, t_light *new_light)
 	i = 0;
 	while (old_array && old_array[i])
 	{
-	   new_array[i] = old_array[i];
-	   i++;
+		new_array[i] = old_array[i];
+		i++;
 	}
 	new_array[i++] = new_light;
 	new_array[i] = NULL;
@@ -76,9 +77,9 @@ void add_light_to_array(t_light ***array, t_light *new_light)
 	*array = new_array;
 }
 
-t_light *create_light(t_coord *point, float brightness, t_TRGB *color)
+t_light	*create_light(t_coord *point, float brightness, t_trgb *color)
 {
-	t_light *light;
+	t_light	*light;
 
 	light = malloc(sizeof(t_light));
 	if (! light)
