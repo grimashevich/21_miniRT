@@ -6,12 +6,13 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/22 17:29:41 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:28:42 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+char			*get_file_name(char *str);
 t_sphere_data	*create_sphere_data(float	diameter);
 t_plane_data	*create_plane_data(t_coord	*vector);
 t_cylinder_data	*create_cylinder_data(float diam, float h, t_coord *vector);
@@ -242,6 +243,7 @@ t_scene *parse_scene(char *filename)
 		return (error_open_file(filename));
 	str = get_next_line(fd);
 	scene = create_scene();
+	scene->description = get_file_name(filename);
 	line_num = 1;
 	while (str)
 	{
