@@ -6,14 +6,14 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 16:59:20 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/24 19:10:27 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_trgb	*parse_color(char *str);
-t_trgb	*parse_coord(char *str);
+t_color	*parse_color(char *str);
+t_color	*parse_coord(char *str);
 t_light	*parse_light(char *str);
 t_camera	*parse_camera(char *str);
 t_scene *parse_scene(char *filename);

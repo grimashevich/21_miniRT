@@ -6,18 +6,18 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 20:07:06 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 16:59:20 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_trgb		*parse_color(char *str);
-t_coord		*parse_coord(char *str);
-t_alight	*create_alight(float ratio, t_trgb *color);
-t_coord		*create_coord(float x, float y, float z);
-t_camera	*create_camera(t_coord *vp, t_coord *vector, int fov);
-t_coord		*parse_norm_vector(char *str);
+t_color		*parse_color(char *str);
+t_vec		*parse_coord(char *str);
+t_alight	*create_alight(float ratio, t_color *color);
+t_vec		*create_coord(float x, float y, float z);
+t_camera	*create_camera(t_vec *vp, t_vec *vector, int fov);
+t_vec		*parse_norm_vector(char *str);
 
 void	*file_format_error(char *str_err)
 {
@@ -29,7 +29,7 @@ void	*file_format_error(char *str_err)
 
 int	check_alight_args(char **args)
 {
-	t_trgb	*color;
+	t_color	*color;
 	float	ratio;
 
 	if (text_len(args) != 3)
@@ -68,7 +68,7 @@ t_alight	*parse_alight(char *str)
 
 int	check_camera_args(char **args)
 {
-	t_coord	*coord;
+	t_vec	*coord;
 	int		fov;
 
 	if (text_len(args) != 4)

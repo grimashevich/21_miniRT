@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 17:07:35 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/24 19:37:35 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,40 +46,42 @@ typedef struct s_trgb
 	int	r;
 	int	g;
 	int	b;
-}	t_trgb;
+}	t_color;
 
 typedef struct s_coord
 {
 	double	x;
 	double	y;
 	double	z;
-}	t_coord;
+}	t_vec;
 
 typedef struct s_alight
 {
 	float	ratio;
-	t_trgb	*color;
+	t_color	*color;
 }	t_alight;
 
 typedef struct s_camera
 {
-	t_coord			*view_point;
-	t_coord			*vector;
+	t_vec			*view_point;
+	t_vec			*vector;
 	unsigned int	fov;
+	t_vec			right;
+	t_vec			up;
 }	t_camera;
 
 typedef struct s_light
 {
-	t_coord	*light_point;
+	t_vec	*light_point;
 	float	brightness;
-	t_trgb	*color;
+	t_color	*color;
 }	t_light;
 
 typedef struct s_object
 {
 	enum e_obj_type	type;
-	t_coord			*coord;
-	t_trgb			*color;
+	t_vec			*coord;
+	t_color			*color;
 	void			*data;
 }	t_object;
 
@@ -91,7 +93,7 @@ typedef struct s_sphere_data
 
 typedef struct s_plane_data
 {
-	t_coord	*vector;
+	t_vec	*vector;
 	//TODO pointer to calc function	
 }	t_plane_data;
 
@@ -99,9 +101,32 @@ typedef struct s_cylinder_data
 {
 	float	diameter;
 	float	height;
-	t_coord	*vector;
+	t_vec	*vector;	
 	//TODO pointer to calc function	
 }	t_cylinder_data;
+
+typedef struct	s_keys
+{
+	int	key_esc;
+}	t_keys;
+
+typedef struct s_ray
+{
+	t_vec	dir;
+	t_vec	orig;
+	double	t;
+	t_vec	phit;
+}	t_ray;
+
+typedef struct s_mlx {
+	void	*ptr;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int	bits_per_pixel;
+	int	line_length;
+	int	endian;
+}	t_mlx;
 
 typedef struct s_scene
 {
@@ -110,6 +135,10 @@ typedef struct s_scene
 	t_camera	*camera;
 	t_light		**lights;
 	t_object	**objects;
+	t_mlx		*mlx;
+	t_keys		*keys;
+	t_ray		ray;
+	double		tnear;
 }	t_scene;
 
 void		exit_error(char *msg);

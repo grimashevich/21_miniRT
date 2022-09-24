@@ -6,15 +6,15 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 17:26:44 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 char			*get_file_name(char *str);
-t_coord			*parse_coord(char *str);
-int				check_norm_vector(t_coord *vector);
+t_vec			*parse_coord(char *str);
+int				check_norm_vector(t_vec *vector);
 void			*error_open_file(char *filename);
 t_scene			*create_scene(void);
 int				open_scene_file(char *filename, int *fd);
@@ -58,8 +58,8 @@ t_scene	*parse_scene(char *filename)
 	return (scene);
 }
 
-t_object	*create_object(enum e_obj_type type, t_coord *coord,
-	t_trgb *color, void *data)
+t_object	*create_object(enum e_obj_type type, t_vec *coord,
+	t_color *color, void *data)
 {	
 	t_object	*obj;
 
@@ -73,7 +73,7 @@ t_object	*create_object(enum e_obj_type type, t_coord *coord,
 	return (obj);
 }
 
-t_camera	*create_camera(t_coord *vp, t_coord *vector, int fov)
+t_camera	*create_camera(t_vec *vp, t_vec *vector, int fov)
 {
 	t_camera	*camera;
 
@@ -86,9 +86,9 @@ t_camera	*create_camera(t_coord *vp, t_coord *vector, int fov)
 	return (camera);
 }
 
-t_coord	*parse_norm_vector(char *str)
+t_vec	*parse_norm_vector(char *str)
 {
-	t_coord	*vector;
+	t_vec	*vector;
 
 	if (! str)
 		return (NULL);

@@ -6,22 +6,22 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 17:46:20 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 16:59:20 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_trgb	*parse_color(char *str);
-t_coord	*parse_coord(char *str);
-t_coord	*parse_norm_vector(char *str);
+t_color	*parse_color(char *str);
+t_vec	*parse_coord(char *str);
+t_vec	*parse_norm_vector(char *str);
 int		check_base_object_args(char **args);
 int		check_sphere_args(char **args);
 int		check_plane_args(char **args);
 int		check_cylinder_args(char **args);
 
 t_object	*create_base_object(enum e_obj_type type,
-	t_coord *coord, t_trgb *color)
+	t_vec *coord, t_color *color)
 {
 	t_object	*object;
 

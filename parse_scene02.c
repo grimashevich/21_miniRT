@@ -6,14 +6,14 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:07:54 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 17:02:09 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_trgb	*create_trgb(int transp, int r, int g, int b);
-t_coord	*create_coord(float x, float y, float z);
+t_color	*create_trgb(int transp, int r, int g, int b);
+t_vec	*create_coord(float x, float y, float z);
 
 t_sphere_data	*create_sphere_data(float diameter)
 {
@@ -26,7 +26,7 @@ t_sphere_data	*create_sphere_data(float diameter)
 	return (data);
 }
 
-t_plane_data	*create_plane_data(t_coord	*vector)
+t_plane_data	*create_plane_data(t_vec	*vector)
 {
 	t_plane_data	*data;
 
@@ -37,7 +37,7 @@ t_plane_data	*create_plane_data(t_coord	*vector)
 	return (data);
 }
 
-t_cylinder_data	*create_cylinder_data(float diam, float h, t_coord *vector)
+t_cylinder_data	*create_cylinder_data(float diam, float h, t_vec *vector)
 {
 	t_cylinder_data	*data;
 
@@ -54,9 +54,9 @@ t_cylinder_data	*create_cylinder_data(float diam, float h, t_coord *vector)
 str: str with 3 or 4 integers separated by comma
 ex: 0,5,100,35
 */
-t_trgb	*parse_color(char *str)
+t_color	*parse_color(char *str)
 {
-	t_trgb	*color;
+	t_color	*color;
 	char	**params;
 	int		count;
 	int		transp;
@@ -86,9 +86,9 @@ t_trgb	*parse_color(char *str)
 str: str with 3 or 4 integers separated by comma
 ex: 0.5,5.15,-100,35
 */
-t_coord	*parse_coord(char *str)
+t_vec	*parse_coord(char *str)
 {
-	t_coord	*coord;
+	t_vec	*coord;
 	char	**params;
 	int		count;
 

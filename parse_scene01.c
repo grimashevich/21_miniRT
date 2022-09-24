@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:51:29 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 17:02:09 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_light_count(t_light	**lights);
 
-t_alight	*create_alight(float ratio, t_trgb *color)
+t_alight	*create_alight(float ratio, t_color *color)
 {
 	t_alight	*alight;
 
@@ -26,11 +26,11 @@ t_alight	*create_alight(float ratio, t_trgb *color)
 	return (alight);
 }
 
-t_coord	*create_coord(float x, float y, float z)
+t_vec	*create_coord(float x, float y, float z)
 {
-	t_coord	*coord;
+	t_vec	*coord;
 
-	coord = malloc(sizeof(t_coord));
+	coord = malloc(sizeof(t_vec));
 	if (! coord)
 		exit_error("malloc error in create_coord");
 	coord->x = x;
@@ -39,11 +39,11 @@ t_coord	*create_coord(float x, float y, float z)
 	return (coord);
 }
 
-t_trgb	*create_trgb(int transp, int r, int g, int b)
+t_color	*create_trgb(int transp, int r, int g, int b)
 {
-	t_trgb	*rgb;
+	t_color	*rgb;
 
-	rgb = malloc(sizeof(t_trgb));
+	rgb = malloc(sizeof(t_color));
 	if (! rgb)
 		exit_error("malloc error in create_trgb");
 	rgb->transp = transp;
@@ -77,7 +77,7 @@ void	add_light_to_array(t_light ***array, t_light *new_light)
 	*array = new_array;
 }
 
-t_light	*create_light(t_coord *point, float brightness, t_trgb *color)
+t_light	*create_light(t_vec *point, float brightness, t_color *color)
 {
 	t_light	*light;
 

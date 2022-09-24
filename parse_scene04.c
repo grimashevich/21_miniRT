@@ -6,20 +6,20 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:45:06 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 16:59:20 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_trgb	*parse_color(char *str);
-t_coord	*parse_coord(char *str);
-t_light	*create_light(t_coord *point, float brightness, t_trgb *color);
+t_color	*parse_color(char *str);
+t_vec	*parse_coord(char *str);
+t_light	*create_light(t_vec *point, float brightness, t_color *color);
 
 int	check_light_args(char **args)
 {
-	t_trgb	*color;
-	t_coord	*coord;
+	t_color	*color;
+	t_vec	*coord;
 	float	ratio;
 	int		args_count;
 
@@ -48,7 +48,7 @@ t_light	*parse_light(char *str)
 {
 	char	**bloks;
 	t_light	*light;
-	t_trgb	*color;
+	t_color	*color;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);
@@ -72,7 +72,7 @@ t_light	*parse_light(char *str)
 	return (light);
 }
 
-int	check_norm_vector(t_coord *vector)
+int	check_norm_vector(t_vec *vector)
 {
 	if (vector->x < -1 || vector->x > 1)
 		return (0);
