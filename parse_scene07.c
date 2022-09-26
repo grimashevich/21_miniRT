@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:43:14 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 16:45:33 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/26 18:48:48 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	free_camera(t_camera *camera)
 {
 	if (! camera)
 		return ;
-	if (camera->view_point)
-		free(camera->view_point);
-	if (camera->vector)
-		free(camera->vector);
+	if (camera->orig)
+		free(camera->orig);
+	if (camera->dir)
+		free(camera->dir);
 	free(camera);
 }
 

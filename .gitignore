@@ -354,3 +354,4 @@ MigrationBackup/
 minirt
 *.o
 *.d
+.vscode/settings.json

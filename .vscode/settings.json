@@ -16,6 +16,10 @@
 		"type_traits": "c",
 		"*.tcc": "c",
 		"random": "c",
-		"limits": "c"
+		"limits": "c",
+		"iosfwd": "c",
+		"iterator": "c",
+		"queue": "c",
+		"version": "c"
 	}
 }

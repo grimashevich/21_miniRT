@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:30:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/26 18:56:36 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ t_camera	*create_camera(t_vec *vp, t_vec *vector, int fov)
 	camera = malloc(sizeof(t_camera));
 	if (! camera)
 		exit_error("malloc error in create_camera");
-	camera->view_point = vp;
-	camera->vector = vector;
+	camera->orig = vp;
+	camera->dir = vector;
 	camera->fov = fov;
 	return (camera);
 }
