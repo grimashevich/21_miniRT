@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:43:14 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/23 16:45:52 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:24:50 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	free_t_plane_data(t_plane_data *data)
 {
 	if (! data)
 		return ;
-	if (data->vector)
-		free(data->vector);
+	if (data->normal)
+		free(data->normal);
 	free(data);
 }
 

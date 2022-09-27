@@ -75,9 +75,9 @@ int	add_object_to_scene(t_scene *scene, char *str, int line_num)
 
 int	is_object_in_str(char *str)
 {
-	if (! (str[0] != 's' || str[0] != 'p' || str[0] != 'c'))
+	if (! (str[0] != 's' && str[0] != 'p' && str[0] != 'c'))
 		return (0);
-	if (! (str[1] != 'p' || str[1] != 'l' || str[1] != 'y'))
+	if (! (str[1] != 'p' && str[1] != 'l' && str[1] != 'y'))
 		return (0);
 	if (! ft_is_spc(str[2]))
 		return (0);

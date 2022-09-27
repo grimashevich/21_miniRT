@@ -6,19 +6,20 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 17:46:20 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:24:50 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_color	*parse_color(char *str);
-t_vec	*parse_coord(char *str);
-t_vec	*parse_norm_vector(char *str);
-int		check_base_object_args(char **args);
-int		check_sphere_args(char **args);
-int		check_plane_args(char **args);
-int		check_cylinder_args(char **args);
+t_color	        *parse_color(char *str);
+t_vec	        *parse_coord(char *str);
+t_vec	        *parse_norm_vector(char *str);
+int		        check_base_object_args(char **args);
+int		        check_sphere_args(char **args);
+int		        check_plane_args(char **args);
+int		        check_cylinder_args(char **args);
+t_sphere_data	*create_sphere_data(double r, t_vec *orig);
 
 t_object	*create_base_object(enum e_obj_type type,
 	t_vec *coord, t_color *color)
@@ -39,7 +40,6 @@ t_object	*parse_sphere(char *str)
 {
 	char			**bloks;
 	t_object		*object;
-	t_sphere_data	*data;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);
@@ -52,11 +52,7 @@ t_object	*parse_sphere(char *str)
 	}
 	object = create_base_object(SPHERE, parse_coord(bloks[1]),
 			parse_color(bloks[3]));
-	data = malloc(sizeof(t_sphere_data));
-	if (!data)
-		exit_error("malloc error in parse_sphere");
-	data->diameter = ft_atof(bloks[2]);
-	object->data = data;
+	object->data = create_sphere_data(ft_atod(bloks[2]), parse_coord(bloks[1]));
 	free_text(bloks);
 	free(str);
 	return (object);
@@ -82,7 +78,7 @@ t_object	*parse_plane(char *str)
 	data = malloc(sizeof(t_plane_data));
 	if (!data)
 		exit_error("malloc error in parse_sphere");
-	data->vector = parse_norm_vector(bloks[2]);
+	data->normal = parse_norm_vector(bloks[2]);
 	object->data = data;
 	free_text(bloks);
 	free(str);

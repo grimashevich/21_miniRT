@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/26 18:48:48 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:24:52 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ enum e_obj_type
 	CYLINDER
 };
 
-typedef struct s_trgb
+typedef struct s_color
 {
 	int	transp;
 	int	r;
@@ -48,7 +48,7 @@ typedef struct s_trgb
 	int	b;
 }	t_color;
 
-typedef struct s_coord
+typedef struct s_vec
 {
 	double	x;
 	double	y;
@@ -88,12 +88,14 @@ typedef struct s_object
 typedef struct s_sphere_data
 {
 	float	diameter;
+	t_vec	*orig;
+	double	r;
 	//TODO pointer to calc function	
 }	t_sphere_data;
 
 typedef struct s_plane_data
 {
-	t_vec	*vector;
+	t_vec	*normal;
 	//TODO pointer to calc function	
 }	t_plane_data;
 
@@ -127,6 +129,15 @@ typedef struct s_mlx {
 	int	line_length;
 	int	endian;
 }	t_mlx;
+
+typedef struct	s_material
+{
+	t_color	color;
+	double	albedo[3];
+	double	spec_exp;
+}	t_material;
+
+
 
 typedef struct s_scene
 {

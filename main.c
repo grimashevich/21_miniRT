@@ -41,11 +41,11 @@ char	*get_file_name(char *str);
 
 void	sandbox(void)
 {	
-	char *str = ft_strdup("../folder/test.rt");
+/*	char *str = ft_strdup("../folder/test.rt");
 	remove_dbl_space(&str);
 	char *fname = get_file_name(str);
 	printf("%s\n", fname);
-	return;
+	return;*/
 	
  	t_scene *sc = parse_scene("test.rt");
 	(void) sc;

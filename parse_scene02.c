@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:07:54 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/24 19:11:57 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:24:50 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 t_color	*create_trgb(int transp, int r, int g, int b);
 t_vec	*create_coord(float x, float y, float z);
 
-t_sphere_data	*create_sphere_data(float diameter)
+t_sphere_data	*create_sphere_data(double r, t_vec *orig)
 {
 	t_sphere_data	*data;
 
-	data = malloc(sizeof(t_sphere_data));
+    if (orig == NULL)
+        return (NULL);
+    data = malloc(sizeof(t_sphere_data));
 	if (! data)
 		exit_error("malloc error in create_sphere_data");
-	data->diameter = diameter;
+	data->r = r;
+	data->orig = orig;
 	return (data);
 }
 
@@ -33,7 +36,7 @@ t_plane_data	*create_plane_data(t_vec	*vector)
 	data = malloc(sizeof(t_plane_data));
 	if (! data)
 		exit_error("malloc error in create_plane_data");
-	data->vector = vector;
+	data->normal = vector;
 	return (data);
 }
 
