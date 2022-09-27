@@ -355,3 +355,7 @@ minirt
 *.o
 *.d
 .vscode/settings.json
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/vcs.xml
+.idea
