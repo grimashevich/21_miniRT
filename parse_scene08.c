@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:43:14 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/27 18:24:50 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/29 20:13:10 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	free_t_cylinder_data(t_cylinder *data)
 void	free_material(t_material *mat)
 {
 	if (! mat)
-		return;
+		return ;
 	if (mat->color)
 		free(mat->color);
 	free(mat);

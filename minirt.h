@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/27 18:24:52 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/29 20:09:17 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,18 @@ typedef struct s_light
 	t_color	*color;
 }	t_light;
 
-typedef struct	s_material
+typedef struct s_material
 {
-    t_color	*color;
-    double	albedo[3];
-    double	spec_exp;
+	t_color	*color;
+	double	albedo[3];
+	double	spec_exp;
 }	t_material;
 
 typedef struct s_object
 {
 	enum e_obj_type	type;
 	t_vec			*coord;
-    t_material      *mat;
+	t_material		*mat;
 	void			*data;
 }	t_object;
 
@@ -96,26 +96,23 @@ typedef struct s_sphere_data
 {
 	t_vec	*orig;
 	double	r;
-	//TODO pointer to calc function	
 }	t_sphere;
 
 typedef struct s_plane_data
 {
-	t_vec   *orig;
-    t_vec	*normal;
-	//TODO pointer to calc function	
+	t_vec	*orig;
+	t_vec	*normal;
 }	t_plane;
 
 typedef struct s_cylinder_data
 {
-    t_vec   *orig;
+	t_vec	*orig;
 	t_vec	*dir;
-    double 	d;
-	double 	h;
-	//TODO pointer to calc function
+	double	d;
+	double	h;
 }	t_cylinder;
 
-typedef struct	s_keys
+typedef struct s_keys
 {
 	int	key_esc;
 }	t_keys;
@@ -133,12 +130,10 @@ typedef struct s_mlx {
 	void	*win;
 	void	*img;
 	char	*addr;
-	int	bits_per_pixel;
-	int	line_length;
-	int	endian;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_mlx;
-
-
 
 typedef struct s_scene
 {
@@ -170,4 +165,4 @@ int			is_all_pos_int(char **text);
 void		*file_format_error(char *str_err);
 void		free_scene(t_scene *scene);
 
-#endif
+#endif	//MINIRT_H

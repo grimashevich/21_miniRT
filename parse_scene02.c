@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:07:54 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/29 19:07:37 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/29 20:03:51 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_sphere	*create_sphere_data(double r, t_vec *orig)
 	t_sphere	*data;
 
 	if (orig == NULL)
-        return (NULL);
-    data = malloc(sizeof(t_sphere));
+		return (NULL);
+	data = malloc(sizeof(t_sphere));
 	if (! data)
 		exit_error("malloc error in create_sphere_data");
 	data->r = r;
@@ -29,7 +29,7 @@ t_sphere	*create_sphere_data(double r, t_vec *orig)
 	return (data);
 }
 
-t_plane *create_plane_data(t_vec *vector, t_vec *orig)
+t_plane	*create_plane_data(t_vec *vector, t_vec *orig)
 {
 	t_plane	*data;
 
@@ -37,14 +37,14 @@ t_plane *create_plane_data(t_vec *vector, t_vec *orig)
 	if (! data)
 		exit_error("malloc error in create_plane_data");
 	data->normal = vector;
-    data->orig = orig;
+	data->orig = orig;
 	return (data);
 }
 
-t_cylinder *create_cylinder_data(t_vec *orig,
-								 double diam,
-								 double h,
-								 t_vec *vector)
+t_cylinder	*create_cylinder_data(t_vec *orig,
+		double diam,
+		double h,
+		t_vec *vector)
 {
 	t_cylinder	*data;
 
