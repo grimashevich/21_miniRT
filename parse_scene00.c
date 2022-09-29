@@ -58,7 +58,8 @@ t_scene	*parse_scene(char *filename)
 	return (scene);
 }
 
-t_object	*create_object(enum e_obj_type type, t_vec *coord,
+/*	TODO DELETE
+	t_object	*create_object(enum e_obj_type type, t_vec *coord,
 	t_color *color, void *data)
 {	
 	t_object	*obj;
@@ -71,7 +72,7 @@ t_object	*create_object(enum e_obj_type type, t_vec *coord,
 	obj->color = color;
 	obj->data = data;
 	return (obj);
-}
+}*/
 
 t_camera	*create_camera(t_vec *vp, t_vec *vector, int fov)
 {

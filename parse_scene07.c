@@ -12,8 +12,8 @@
 
 #include "minirt.h"
 
-void	free_t_plane_data(t_plane_data *data);
-void	free_t_cylinder_data(t_cylinder_data *data);
+void	free_t_plane_data(t_plane *data);
+void	free_t_cylinder_data(t_cylinder *data);
 void	free_object(t_object *object);
 
 void	free_alight(t_alight *alight)

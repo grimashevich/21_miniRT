@@ -90,7 +90,7 @@ typedef struct s_object
 }	t_object;
 
 
-//TODO изменить t_object
+//! изменить t_object
 // перенести coord в data
 // перенести color в material
 //typedef struct	s_material
@@ -101,7 +101,7 @@ typedef struct s_object
 //}	t_material;
 
 
-//TODO поменять структуры объектов на структуры ние
+//! поменять структуры объектов на структуры ниже
 //typedef struct	s_sphere
 //{
 	//t_vec	orig;

@@ -77,35 +77,43 @@ typedef struct s_light
 	t_color	*color;
 }	t_light;
 
+typedef struct	s_material
+{
+    t_color	*color;
+    double	albedo[3];
+    double	spec_exp;
+}	t_material;
+
 typedef struct s_object
 {
 	enum e_obj_type	type;
 	t_vec			*coord;
-	t_color			*color;
+    t_material      *mat;
 	void			*data;
 }	t_object;
 
 typedef struct s_sphere_data
 {
-	float	diameter;
 	t_vec	*orig;
 	double	r;
 	//TODO pointer to calc function	
-}	t_sphere_data;
+}	t_sphere;
 
 typedef struct s_plane_data
 {
-	t_vec	*normal;
+	t_vec   *orig;
+    t_vec	*normal;
 	//TODO pointer to calc function	
-}	t_plane_data;
+}	t_plane;
 
 typedef struct s_cylinder_data
 {
-	float	diameter;
-	float	height;
-	t_vec	*vector;	
-	//TODO pointer to calc function	
-}	t_cylinder_data;
+    t_vec   *orig;
+	t_vec	*dir;
+    double 	d;
+	double 	h;
+	//TODO pointer to calc function
+}	t_cylinder;
 
 typedef struct	s_keys
 {
@@ -129,13 +137,6 @@ typedef struct s_mlx {
 	int	line_length;
 	int	endian;
 }	t_mlx;
-
-typedef struct	s_material
-{
-	t_color	color;
-	double	albedo[3];
-	double	spec_exp;
-}	t_material;
 
 
 

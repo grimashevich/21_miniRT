@@ -6,7 +6,7 @@
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:07:54 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/27 18:24:50 by eclown           ###   ########.fr       */
+/*   Updated: 2022/09/29 19:07:37 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 t_color	*create_trgb(int transp, int r, int g, int b);
 t_vec	*create_coord(float x, float y, float z);
 
-t_sphere_data	*create_sphere_data(double r, t_vec *orig)
+t_sphere	*create_sphere_data(double r, t_vec *orig)
 {
-	t_sphere_data	*data;
+	t_sphere	*data;
 
-    if (orig == NULL)
+	if (orig == NULL)
         return (NULL);
-    data = malloc(sizeof(t_sphere_data));
+    data = malloc(sizeof(t_sphere));
 	if (! data)
 		exit_error("malloc error in create_sphere_data");
 	data->r = r;
@@ -29,27 +29,32 @@ t_sphere_data	*create_sphere_data(double r, t_vec *orig)
 	return (data);
 }
 
-t_plane_data	*create_plane_data(t_vec	*vector)
+t_plane *create_plane_data(t_vec *vector, t_vec *orig)
 {
-	t_plane_data	*data;
+	t_plane	*data;
 
-	data = malloc(sizeof(t_plane_data));
+	data = malloc(sizeof(t_plane));
 	if (! data)
 		exit_error("malloc error in create_plane_data");
 	data->normal = vector;
+    data->orig = orig;
 	return (data);
 }
 
-t_cylinder_data	*create_cylinder_data(float diam, float h, t_vec *vector)
+t_cylinder *create_cylinder_data(t_vec *orig,
+								 double diam,
+								 double h,
+								 t_vec *vector)
 {
-	t_cylinder_data	*data;
+	t_cylinder	*data;
 
-	data = malloc(sizeof(t_cylinder_data));
+	data = malloc(sizeof(t_cylinder));
 	if (! data)
 		exit_error("malloc error in create_cylinder_data");
-	data->diameter = diam;
-	data->vector = vector;
-	data->height = h;
+	data->orig = orig;
+	data->d = diam;
+	data->dir = vector;
+	data->h = h;
 	return (data);
 }
 
