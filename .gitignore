@@ -352,6 +352,7 @@ MigrationBackup/
 .DS_Store
 .vscode
 minirt
+*.a
 *.o
 *.d
 .vscode/settings.json
