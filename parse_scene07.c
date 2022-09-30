@@ -69,7 +69,7 @@ void	free_object_array(t_object **object_array)
 	free(object_array);
 }
 
-void	free_scene(t_scene *scene)
+void	free_scene(t_minirt *scene)
 {
 	if (! scene)
 		return ;

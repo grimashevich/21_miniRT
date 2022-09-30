@@ -12,11 +12,11 @@
 
 #include "minirt.h"
 
-t_scene		*parse_scene(char *filename);
+t_minirt		*parse_scene(char *filename);
 
 void	sandbox(void)
 {	
-	t_scene	*sc;
+	t_minirt	*sc;
 
 	(void) sc;
 	sc = parse_scene("test.rt");

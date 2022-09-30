@@ -16,9 +16,9 @@ t_object	*parse_sphere(char *str);
 t_object	*parse_plane(char *str);
 t_object	*parse_cylinder(char *str);
 int			parse_error(int line_num, char *str);
-int			add_alight_to_scene(t_scene *scene, char *str, int line_num);
-int			add_camera_to_scene(t_scene *scene, char *str, int line_num);
-int			add_light_to_scene(t_scene *scene, char *str, int line_num);
+int			add_alight_to_scene(t_minirt *scene, char *str, int line_num);
+int			add_camera_to_scene(t_minirt *scene, char *str, int line_num);
+int			add_light_to_scene(t_minirt *scene, char *str, int line_num);
 
 int	get_object_count(t_object	**object_array)
 {
@@ -55,7 +55,7 @@ void	add_object_to_array(t_object ***object_array, t_object *new_object)
 	*object_array = new_obj_array;
 }
 
-int	add_object_to_scene(t_scene *scene, char *str, int line_num)
+int	add_object_to_scene(t_minirt *scene, char *str, int line_num)
 {
 	t_object	*new_object;
 
@@ -84,7 +84,7 @@ int	is_object_in_str(char *str)
 	return (1);
 }
 
-int	parse_str_scene(t_scene *scene, char *str, int line_num)
+int	parse_str_scene(t_minirt *scene, char *str, int line_num)
 {
 	int	add_error;
 

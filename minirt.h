@@ -87,7 +87,7 @@ typedef struct s_material
 typedef struct s_object
 {
 	enum e_obj_type	type;
-	t_vec			*coord;
+	//t_vec			*coord;
 	t_material		*mat;
 	void			*data;
 }	t_object;
@@ -146,7 +146,7 @@ typedef struct s_scene
 	t_keys		*keys;
 	t_ray		ray;
 	double		tnear;
-}	t_scene;
+}	t_minirt;
 
 void		exit_error(char *msg);
 char		**ft_split_new(char *str, char sep);
@@ -163,6 +163,6 @@ int			ft_is_float(char *str);
 int			is_all_float(char **text);
 int			is_all_pos_int(char **text);
 void		*file_format_error(char *str_err);
-void		free_scene(t_scene *scene);
+void		free_scene(t_minirt *scene);
 
 #endif	//MINIRT_H

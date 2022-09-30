@@ -47,10 +47,8 @@ void	free_object(t_object *object)
 {
 	if (! object)
 		return ;
-	if (object->coord)
-		free(object->coord);
 	if (! object->mat)
-		free(object->mat);
+		free_material(object->mat);
 	if (object->type == SPHERE && object->data)
 		free(object->data);
 	if (object->type == PLANE && object->data)

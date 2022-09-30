@@ -14,11 +14,11 @@
 
 int	check_scene_file_extension(char *filename);
 
-t_scene	*create_scene(void)
+t_minirt	*create_scene(void)
 {
-	t_scene	*scene;
+	t_minirt	*scene;
 
-	scene = ft_calloc(1, sizeof(t_scene));
+	scene = ft_calloc(1, sizeof(t_minirt));
 	if (scene == NULL)
 		exit_error("malloc error in create_scene");
 	return (scene);

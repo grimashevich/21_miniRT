@@ -32,7 +32,7 @@ int	parse_error(int line_num, char *str)
 	return (1);
 }
 
-int	add_alight_to_scene(t_scene *scene, char *str, int line_num)
+int	add_alight_to_scene(t_minirt *scene, char *str, int line_num)
 {
 	if (scene->alight)
 		return (parse_error(line_num, "There is second \
@@ -55,7 +55,7 @@ int	get_light_count(t_light	**lights)
 	return (i);
 }
 
-int	add_light_to_scene(t_scene *scene, char *str, int line_num)
+int	add_light_to_scene(t_minirt *scene, char *str, int line_num)
 {
 	int	lights_count;
 
@@ -68,7 +68,7 @@ int	add_light_to_scene(t_scene *scene, char *str, int line_num)
 	return (0);
 }
 
-int	add_camera_to_scene(t_scene *scene, char *str, int line_num)
+int	add_camera_to_scene(t_minirt *scene, char *str, int line_num)
 {
 	if (scene->camera)
 	{
