@@ -89,7 +89,7 @@ typedef struct s_object
 	enum e_obj_type	type;
 	//t_vec			*coord;
 	t_material		*mat;
-	void			*data;
+	void			*params;
 }	t_object;
 
 typedef struct s_sphere_data

@@ -60,7 +60,7 @@ t_minirt	*parse_scene(char *filename)
 
 /*	TODO DELETE
 	t_object	*create_object(enum e_obj_type type, t_vec *coord,
-	t_color *color, void *data)
+	t_color *color, void *params)
 {	
 	t_object	*obj;
 
@@ -70,7 +70,7 @@ t_minirt	*parse_scene(char *filename)
 	obj->type = type;
 	obj->coord = coord;
 	obj->color = color;
-	obj->data = data;
+	obj->params = params;
 	return (obj);
 }*/
 

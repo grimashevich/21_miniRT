@@ -49,11 +49,11 @@ void	free_object(t_object *object)
 		return ;
 	if (! object->mat)
 		free_material(object->mat);
-	if (object->type == SPHERE && object->data)
-		free(object->data);
-	if (object->type == PLANE && object->data)
-		free_t_plane_data(object->data);
-	if (object->type == CYLINDER && object->data)
-		free_t_cylinder_data(object->data);
+	if (object->type == SPHERE && object->params)
+		free(object->params);
+	if (object->type == PLANE && object->params)
+		free_t_plane_data(object->params);
+	if (object->type == CYLINDER && object->params)
+		free_t_cylinder_data(object->params);
 	free(object);
 }

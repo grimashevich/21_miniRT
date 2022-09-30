@@ -57,7 +57,7 @@ t_object	*parse_sphere(char *str)
 	}
 	object = create_base_object(SPHERE,
 			parse_color(bloks[3]));
-	object->data = create_sphere_data(ft_atod(bloks[2]), parse_coord(bloks[1]));
+	object->params = create_sphere_data(ft_atod(bloks[2]), parse_coord(bloks[1]));
 	free_text(bloks);
 	free(str);
 	return (object);
@@ -79,8 +79,8 @@ t_object	*parse_plane(char *str)
 	}
 	object = create_base_object(PLANE,
 			parse_color(bloks[3]));
-	object->data = create_plane_data(parse_norm_vector(bloks[2]),
-			parse_coord(bloks[1]));
+	object->params = create_plane_data(parse_norm_vector(bloks[2]),
+									   parse_coord(bloks[1]));
 	free_text(bloks);
 	free(str);
 	return (object);
@@ -102,10 +102,10 @@ t_object	*parse_cylinder(char *str)
 	}
 	object = create_base_object(CYLINDER,
 			parse_color(bloks[3]));
-	object->data = create_cylinder_data(parse_coord(bloks[1]),
-			ft_atod(bloks[3]),
-			ft_atod(bloks[4]),
-			parse_norm_vector(bloks[2]));
+	object->params = create_cylinder_data(parse_coord(bloks[1]),
+										  ft_atod(bloks[3]),
+										  ft_atod(bloks[4]),
+										  parse_norm_vector(bloks[2]));
 	free_text(bloks);
 	free(str);
 	return (object);
