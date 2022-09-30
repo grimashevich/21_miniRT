@@ -84,8 +84,8 @@ t_light	*create_light(t_vec *point, float brightness, t_color *color)
 	light = malloc(sizeof(t_light));
 	if (! light)
 		exit_error("malloc error in create_light");
-	light->light_point = point;
-	light->brightness = brightness;
+	light->pos = point;
+	light->intens = brightness;
 	if (color != NULL)
 		light->color = color;
 	else

@@ -65,7 +65,7 @@ t_light	*parse_light(char *str)
 		color = NULL;
 	light = create_light(
 			parse_coord(bloks[1]),
-			ft_atof(bloks[2]),
+			ft_atod(bloks[2]),
 			color);
 	free_text(bloks);
 	free(str);

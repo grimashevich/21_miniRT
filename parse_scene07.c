@@ -49,8 +49,8 @@ void	free_light_array(t_light **light_array)
 			return ;
 		if (light_array[i]->color)
 			free(light_array[i]->color);
-		if (light_array[i]->light_point)
-			free(light_array[i]->light_point);
+		if (light_array[i]->pos)
+			free(light_array[i]->pos);
 		free(light_array[i]);
 		i++;
 	}
