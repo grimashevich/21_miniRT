@@ -19,21 +19,21 @@ int			check_base_object_args(char **args);
 int			check_sphere_args(char **args);
 int			check_plane_args(char **args);
 int			check_cylinder_args(char **args);
-t_sphere	*create_sphere_data(double r, t_vec *orig);
-t_plane		*create_plane_data(t_vec *vector, t_vec *orig);
-t_cylinder	*create_cylinder_data(t_vec *orig,
-				double diam,
-				double h,
-				t_vec *vector);
+t_sphere_p	*create_sphere_data(double r, t_vec *orig);
+t_plane_p		*create_plane_data(t_vec *vector, t_vec *orig);
+t_cylinder_p	*create_cylinder_data(t_vec *orig,
+									  double diam,
+									  double h,
+									  t_vec *vector);
 
-t_object	*create_base_object(enum e_obj_type type, t_color *color)
+t_object_p	*create_base_object(enum e_obj_type type, t_color *color)
 {
-	t_object	*object;
+	t_object_p	*object;
 
-	object = ft_calloc(1, sizeof(t_object));
+	object = ft_calloc(1, sizeof(t_object_p));
 	if (!object)
 		exit_error("malloc error in create_base_object");
-	object->mat = ft_calloc(1, sizeof(t_material));
+	object->mat = ft_calloc(1, sizeof(t_material_p));
 	if (! object->mat)
 		exit_error("malloc error in create_base_object (mat)");
 	object->mat->color = color;
@@ -41,10 +41,10 @@ t_object	*create_base_object(enum e_obj_type type, t_color *color)
 	return (object);
 }
 
-t_object	*parse_sphere(char *str)
+t_object_p	*parse_sphere(char *str)
 {
 	char			**bloks;
-	t_object		*object;
+	t_object_p		*object;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);
@@ -63,10 +63,10 @@ t_object	*parse_sphere(char *str)
 	return (object);
 }
 
-t_object	*parse_plane(char *str)
+t_object_p	*parse_plane(char *str)
 {
 	char			**bloks;
-	t_object		*object;
+	t_object_p		*object;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);
@@ -86,10 +86,10 @@ t_object	*parse_plane(char *str)
 	return (object);
 }
 
-t_object	*parse_cylinder(char *str)
+t_object_p	*parse_cylinder(char *str)
 {
 	char			**bloks;
-	t_object		*object;
+	t_object_p		*object;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);

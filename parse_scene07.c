@@ -12,11 +12,11 @@
 
 #include "minirt.h"
 
-void	free_t_plane_data(t_plane *data);
-void	free_t_cylinder_data(t_cylinder *data);
-void	free_object(t_object *object);
+void	free_t_plane_data(t_plane_p *data);
+void	free_t_cylinder_data(t_cylinder_p *data);
+void	free_object(t_object_p *object);
 
-void	free_alight(t_alight *alight)
+void	free_alight(t_alight_p *alight)
 {
 	if (! alight)
 		return ;
@@ -25,7 +25,7 @@ void	free_alight(t_alight *alight)
 	free(alight);
 }
 
-void	free_camera(t_camera *camera)
+void	free_camera(t_camera_p *camera)
 {
 	if (! camera)
 		return ;
@@ -36,7 +36,7 @@ void	free_camera(t_camera *camera)
 	free(camera);
 }
 
-void	free_light_array(t_light **light_array)
+void	free_light_array(t_light_p **light_array)
 {
 	int	i;
 
@@ -57,7 +57,7 @@ void	free_light_array(t_light **light_array)
 	free(light_array);
 }
 
-void	free_object_array(t_object **object_array)
+void	free_object_array(t_object_p **object_array)
 {
 	int	i;
 

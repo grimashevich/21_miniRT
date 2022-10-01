@@ -12,15 +12,15 @@
 
 #include "minirt.h"
 
-t_object	*parse_sphere(char *str);
-t_object	*parse_plane(char *str);
-t_object	*parse_cylinder(char *str);
+t_object_p	*parse_sphere(char *str);
+t_object_p	*parse_plane(char *str);
+t_object_p	*parse_cylinder(char *str);
 int			parse_error(int line_num, char *str);
 int			add_alight_to_scene(t_minirt *scene, char *str, int line_num);
 int			add_camera_to_scene(t_minirt *scene, char *str, int line_num);
 int			add_light_to_scene(t_minirt *scene, char *str, int line_num);
 
-int	get_object_count(t_object	**object_array)
+int	get_object_count(t_object_p	**object_array)
 {
 	int	i;
 
@@ -32,14 +32,14 @@ int	get_object_count(t_object	**object_array)
 	return (i);
 }
 
-void	add_object_to_array(t_object ***object_array, t_object *new_object)
+void	add_object_to_array(t_object_p ***object_array, t_object_p *new_object)
 {
-	t_object	**old_obj_array;
-	t_object	**new_obj_array;
+	t_object_p	**old_obj_array;
+	t_object_p	**new_obj_array;
 	int			i;
 
 	old_obj_array = *object_array;
-	new_obj_array = malloc(sizeof(t_object *)
+	new_obj_array = malloc(sizeof(t_object_p *)
 			*(get_object_count(old_obj_array) +2));
 	if (! new_obj_array)
 		exit_error("malloc error in add_object_to_array");
@@ -57,7 +57,7 @@ void	add_object_to_array(t_object ***object_array, t_object *new_object)
 
 int	add_object_to_scene(t_minirt *scene, char *str, int line_num)
 {
-	t_object	*new_object;
+	t_object_p	*new_object;
 
 	if (str[0] == 's')
 		new_object = parse_sphere(str);

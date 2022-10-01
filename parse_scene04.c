@@ -14,7 +14,7 @@
 
 t_color	*parse_color(char *str);
 t_vec	*parse_coord(char *str);
-t_light	*create_light(t_vec *point, float brightness, t_color *color);
+t_light_p	*create_light(t_vec *point, float brightness, t_color *color);
 
 int	check_light_args(char **args)
 {
@@ -44,10 +44,10 @@ int	check_light_args(char **args)
 	return (1);
 }
 
-t_light	*parse_light(char *str)
+t_light_p	*parse_light(char *str)
 {
 	char	**bloks;
-	t_light	*light;
+	t_light_p	*light;
 	t_color	*color;
 
 	str = ft_strdup(str);

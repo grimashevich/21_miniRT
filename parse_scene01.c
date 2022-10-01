@@ -12,13 +12,13 @@
 
 #include "minirt.h"
 
-int	get_light_count(t_light	**lights);
+int	get_light_count(t_light_p	**lights);
 
-t_alight	*create_alight(float ratio, t_color *color)
+t_alight_p	*create_alight(float ratio, t_color *color)
 {
-	t_alight	*alight;
+	t_alight_p	*alight;
 
-	alight = malloc(sizeof(t_alight));
+	alight = malloc(sizeof(t_alight_p));
 	if (! alight)
 		exit_error("malloc error in create_alight");
 	alight->ratio = ratio;
@@ -53,15 +53,15 @@ t_color	*create_trgb(int transp, int r, int g, int b)
 	return (rgb);
 }
 
-void	add_light_to_array(t_light ***array, t_light *new_light)
+void	add_light_to_array(t_light_p ***array, t_light_p *new_light)
 {
-	t_light	**new_array;
-	t_light	**old_array;
+	t_light_p	**new_array;
+	t_light_p	**old_array;
 	int		i;
 
 	old_array = *array;
 	i = get_light_count(old_array);
-	new_array = malloc(sizeof(t_light *) * (i + 2));
+	new_array = malloc(sizeof(t_light_p *) * (i + 2));
 	if (! new_array)
 		exit_error("malloc error in add_light_to_array");
 	i = 0;
@@ -77,11 +77,11 @@ void	add_light_to_array(t_light ***array, t_light *new_light)
 	*array = new_array;
 }
 
-t_light	*create_light(t_vec *point, float brightness, t_color *color)
+t_light_p	*create_light(t_vec *point, float brightness, t_color *color)
 {
-	t_light	*light;
+	t_light_p	*light;
 
-	light = malloc(sizeof(t_light));
+	light = malloc(sizeof(t_light_p));
 	if (! light)
 		exit_error("malloc error in create_light");
 	light->pos = point;

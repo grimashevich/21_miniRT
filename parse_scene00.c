@@ -59,10 +59,10 @@ t_minirt	*parse_scene(char *filename)
 }
 
 /*	TODO DELETE
-	t_object	*create_object(enum e_obj_type type, t_vec *coord,
+	t_object_p	*create_object(enum e_obj_type type, t_vec *coord,
 	t_color *color, void *params)
 {	
-	t_object	*obj;
+	t_object_p	*obj;
 
 	obj = malloc(sizeof(obj));
 	if (! obj)
@@ -74,11 +74,11 @@ t_minirt	*parse_scene(char *filename)
 	return (obj);
 }*/
 
-t_camera	*create_camera(t_vec *vp, t_vec *vector, int fov)
+t_camera_p	*create_camera(t_vec *vp, t_vec *vector, int fov)
 {
-	t_camera	*camera;
+	t_camera_p	*camera;
 
-	camera = malloc(sizeof(t_camera));
+	camera = malloc(sizeof(t_camera_p));
 	if (! camera)
 		exit_error("malloc error in create_camera");
 	camera->orig = vp;

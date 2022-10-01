@@ -14,9 +14,9 @@
 
 t_color		*parse_color(char *str);
 t_vec		*parse_coord(char *str);
-t_alight	*create_alight(float ratio, t_color *color);
+t_alight_p	*create_alight(float ratio, t_color *color);
 t_vec		*create_coord(float x, float y, float z);
-t_camera	*create_camera(t_vec *vp, t_vec *vector, int fov);
+t_camera_p	*create_camera(t_vec *vp, t_vec *vector, int fov);
 t_vec		*parse_norm_vector(char *str);
 
 void	*file_format_error(char *str_err)
@@ -46,10 +46,10 @@ int	check_alight_args(char **args)
 	return (1);
 }
 
-t_alight	*parse_alight(char *str)
+t_alight_p	*parse_alight(char *str)
 {
 	char		**bloks;
-	t_alight	*alight;
+	t_alight_p	*alight;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);
@@ -89,10 +89,10 @@ int	check_camera_args(char **args)
 	return (1);
 }
 
-t_camera	*parse_camera(char *str)
+t_camera_p	*parse_camera(char *str)
 {
 	char		**bloks;
-	t_camera	*camera;
+	t_camera_p	*camera;
 
 	str = ft_strdup(str);
 	replace_space_chars_to_space(str);

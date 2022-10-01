@@ -26,6 +26,7 @@
 # include	"mlx/mlx_png.h"
 # include	"get_next_line.h"
 
+
 typedef struct s_scr {
 	void		*mlx;
 	void		*win;
@@ -55,62 +56,61 @@ typedef struct s_vec
 	double	z;
 }	t_vec;
 
-typedef struct s_alight
+typedef struct s_alight_p
 {
 	float	ratio;
 	t_color	*color;
-}	t_alight;
+}	t_alight_p;
 
-typedef struct s_camera
+typedef struct s_camera_p
 {
 	t_vec			*orig;
 	t_vec			*dir;
 	unsigned int	fov;
 	t_vec			right;
 	t_vec			up;
-}	t_camera;
+}	t_camera_p;
 
-typedef struct s_light
+typedef struct s_light_p
 {
 	t_vec	*pos;
 	double	intens;
 	t_color	*color;
-}	t_light;
+}	t_light_p;
 
-typedef struct s_material
+typedef struct s_material_p
 {
 	t_color	*color;
 	double	albedo[3];
 	double	spec_exp;
-}	t_material;
+}	t_material_p;
 
-typedef struct s_object
+typedef struct s_object_p
 {
 	enum e_obj_type	type;
-	//t_vec			*coord;
-	t_material		*mat;
+	t_material_p	*mat;
 	void			*params;
-}	t_object;
+}	t_object_p;
 
-typedef struct s_sphere_data
+typedef struct s_sphere_data_p
 {
 	t_vec	*orig;
 	double	r;
-}	t_sphere;
+}	t_sphere_p;
 
-typedef struct s_plane_data
+typedef struct s_plane_data_p
 {
 	t_vec	*orig;
 	t_vec	*normal;
-}	t_plane;
+}	t_plane_p;
 
-typedef struct s_cylinder_data
+typedef struct s_cylinder_data_p
 {
 	t_vec	*orig;
 	t_vec	*dir;
 	double	d;
 	double	h;
-}	t_cylinder;
+}	t_cylinder_p;
 
 typedef struct s_keys
 {
@@ -125,16 +125,6 @@ typedef struct s_ray
 	t_vec	phit;
 }	t_ray;
 
-typedef struct s_mlx {
-	void	*ptr;
-	void	*win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_mlx;
-
 typedef struct s_scene
 {
 	char		*description;
@@ -142,7 +132,7 @@ typedef struct s_scene
 	t_camera	*camera;
 	t_light		**lights;
 	t_object	**objects;
-	t_mlx		*mlx;
+	//t_mlx		*mlx;
 	t_keys		*keys;
 	t_ray		ray;
 	double		tnear;
@@ -164,5 +154,63 @@ int			is_all_float(char **text);
 int			is_all_pos_int(char **text);
 void		*file_format_error(char *str_err);
 void		free_scene(t_minirt *scene);
+
+/*typedef struct s_alight
+{
+	float	ratio;
+	t_color	color;
+}	t_alight;
+
+typedef struct s_camera
+{
+	t_vec			orig;
+	t_vec			dir;
+	unsigned int	fov;
+	t_vec			right;
+	t_vec			up;
+}	t_camera;
+
+typedef struct s_light
+{
+	t_vec	pos;
+	double	intens;
+	t_color	color;
+}	t_light;
+
+typedef struct s_material
+{
+	t_color	color;
+	double	albedo[3];
+	double	spec_exp;
+}	t_material;
+
+typedef struct s_object
+{
+	enum e_obj_type	type;
+	t_material		mat;
+	void			*params;
+	int				(*intersect)();
+	t_vec			(*get_normal)();
+}	t_object;
+
+typedef struct s_sphere_data
+{
+	t_vec	orig;
+	double	r;
+}	t_sphere;
+
+typedef struct s_plane_data
+{
+	t_vec	orig;
+	t_vec	normal;
+}	t_plane;
+
+typedef struct s_cylinder_data
+{
+	t_vec	orig;
+	t_vec	dir;
+	double	d;
+	double	h;
+}	t_cylinder;*/
 
 #endif	//MINIRT_H

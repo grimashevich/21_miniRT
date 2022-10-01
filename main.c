@@ -11,16 +11,22 @@
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "scene_converter.h"
+
+t_alight *convert_alight(t_alight_p *obj_in);
 
 t_minirt		*parse_scene(char *filename);
 
 void	sandbox(void)
 {	
 	t_minirt	*sc;
+	t_alight *al = convert_alight(NULL);
 
 	(void) sc;
+	(void ) al;
 	sc = parse_scene("test.rt");
 	free_scene(sc);
+
 }
 
 int	main(void)

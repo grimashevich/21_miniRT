@@ -12,10 +12,10 @@
 
 #include "minirt.h"
 
-void			add_light_to_array(t_light ***array, t_light *new_light);
-t_alight		*parse_alight(char *str);
-t_light			*parse_light(char *str);
-t_camera		*parse_camera(char *str);
+void			add_light_to_array(t_light_p ***array, t_light_p *new_light);
+t_alight_p		*parse_alight(char *str);
+t_light_p			*parse_light(char *str);
+t_camera_p		*parse_camera(char *str);
 
 int	parse_error(int line_num, char *str)
 {
@@ -43,7 +43,7 @@ int	add_alight_to_scene(t_minirt *scene, char *str, int line_num)
 	return (0);
 }
 
-int	get_light_count(t_light	**lights)
+int	get_light_count(t_light_p	**lights)
 {
 	int	i;
 

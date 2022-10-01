@@ -15,13 +15,13 @@
 t_color	*create_trgb(int transp, int r, int g, int b);
 t_vec	*create_coord(float x, float y, float z);
 
-t_sphere	*create_sphere_data(double r, t_vec *orig)
+t_sphere_p	*create_sphere_data(double r, t_vec *orig)
 {
-	t_sphere	*data;
+	t_sphere_p	*data;
 
 	if (orig == NULL)
 		return (NULL);
-	data = malloc(sizeof(t_sphere));
+	data = malloc(sizeof(t_sphere_p));
 	if (! data)
 		exit_error("malloc error in create_sphere_data");
 	data->r = r;
@@ -29,11 +29,11 @@ t_sphere	*create_sphere_data(double r, t_vec *orig)
 	return (data);
 }
 
-t_plane	*create_plane_data(t_vec *vector, t_vec *orig)
+t_plane_p	*create_plane_data(t_vec *vector, t_vec *orig)
 {
-	t_plane	*data;
+	t_plane_p	*data;
 
-	data = malloc(sizeof(t_plane));
+	data = malloc(sizeof(t_plane_p));
 	if (! data)
 		exit_error("malloc error in create_plane_data");
 	data->normal = vector;
@@ -41,14 +41,14 @@ t_plane	*create_plane_data(t_vec *vector, t_vec *orig)
 	return (data);
 }
 
-t_cylinder	*create_cylinder_data(t_vec *orig,
-		double diam,
-		double h,
-		t_vec *vector)
+t_cylinder_p	*create_cylinder_data(t_vec *orig,
+									  double diam,
+									  double h,
+									  t_vec *vector)
 {
-	t_cylinder	*data;
+	t_cylinder_p	*data;
 
-	data = malloc(sizeof(t_cylinder));
+	data = malloc(sizeof(t_cylinder_p));
 	if (! data)
 		exit_error("malloc error in create_cylinder_data");
 	data->orig = orig;

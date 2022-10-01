@@ -12,11 +12,11 @@
 
 #include "minirt.h"
 
-void	free_t_plane_data(t_plane *data);
-void	free_t_cylinder_data(t_cylinder *data);
-void	free_object(t_object *object);
+void	free_t_plane_data(t_plane_p *data);
+void	free_t_cylinder_data(t_cylinder_p *data);
+void	free_object(t_object_p *object);
 
-void	free_t_plane_data(t_plane *data)
+void	free_t_plane_data(t_plane_p *data)
 {
 	if (! data)
 		return ;
@@ -25,7 +25,7 @@ void	free_t_plane_data(t_plane *data)
 	free(data);
 }
 
-void	free_t_cylinder_data(t_cylinder *data)
+void	free_t_cylinder_data(t_cylinder_p *data)
 {
 	if (! data)
 		return ;
@@ -34,7 +34,7 @@ void	free_t_cylinder_data(t_cylinder *data)
 	free(data);
 }
 
-void	free_material(t_material *mat)
+void	free_material(t_material_p *mat)
 {
 	if (! mat)
 		return ;
@@ -43,7 +43,7 @@ void	free_material(t_material *mat)
 	free(mat);
 }
 
-void	free_object(t_object *object)
+void	free_object(t_object_p *object)
 {
 	if (! object)
 		return ;
