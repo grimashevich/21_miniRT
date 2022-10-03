@@ -55,19 +55,14 @@ t_light	*convert_light(t_light_p *in)
 	return (out);
 }
 
-t_material	*convert_material(t_material_p *in)
+t_material	convert_material(t_material_p *in)
 {
-	t_material	*out;
+	t_material	out;
 
-	if (! in)
-		return NULL;
-	out = ft_calloc(1, sizeof(t_material));
-	if (! out)
-		exit_error("Malloc error in convert_material");
-	out->color = *(in->color);
-	out->albedo[0] = in->albedo[0];
-	out->albedo[1] = in->albedo[1];
-	out->albedo[2] = in->albedo[2];
+	out.color = *(in->color);
+	out.albedo[0] = in->albedo[0];
+	out.albedo[1] = in->albedo[1];
+	out.albedo[2] = in->albedo[2];
 	return (out);
 }
 
@@ -80,23 +75,20 @@ t_cylinder	*convert_cylinder(t_cylinder_p *in);
 t_object	*convert_object(t_object_p *in)
 {
 	t_object		*out;
-	t_material_p	*mat;
 
 	if (! in)
 		return NULL;
 	out = ft_calloc(1, sizeof(t_object));
 	if (! out)
 		exit_error("Malloc error in convert_object");
+	out->type = in->type;
 	if (in->type == SPHERE)
 		out->params = convert_sphere((t_sphere_p *) in->params);
 	else if (in->type == PLANE)
 		out->params = convert_plane((t_plane_p *) in->params);
 	else if (in->type == CYLINDER)
 		out->params = convert_cylinder((t_cylinder_p *) in->params);
-	out->params = in->params;
-	mat = in->mat;
-	out->mat = *convert_material(in->mat);
-	free_material(mat);
+	out->mat = convert_material(in->mat);
 	return (out);
 }
 

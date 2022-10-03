@@ -22,6 +22,8 @@ void	free_t_plane_data(t_plane_p *data)
 		return ;
 	if (data->normal)
 		free(data->normal);
+	if (data->orig)
+		free(data->orig);
 	free(data);
 }
 
@@ -31,6 +33,8 @@ void	free_t_cylinder_data(t_cylinder_p *data)
 		return ;
 	if (data->dir)
 		free(data->dir);
+	if (data->orig)
+		free(data->orig);
 	free(data);
 }
 
@@ -47,10 +51,14 @@ void	free_object(t_object_p *object)
 {
 	if (! object)
 		return ;
-	if (! object->mat)
+	if (object->mat)
 		free_material(object->mat);
 	if (object->type == SPHERE && object->params)
+	{
+		if (((t_sphere_p *) object->params)->orig)
+			free(((t_sphere_p *) object->params)->orig);
 		free(object->params);
+	}
 	if (object->type == PLANE && object->params)
 		free_t_plane_data(object->params);
 	if (object->type == CYLINDER && object->params)

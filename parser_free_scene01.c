@@ -38,7 +38,7 @@ void	free_object_array(t_object **object_array)
 	while (object_array[i])
 	{
 		free(object_array[i]->params);
-		free(object_array[i]);
+		free(object_array[i++]);
 	}
 	free(object_array);
 }
