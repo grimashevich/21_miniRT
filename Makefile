@@ -23,7 +23,7 @@ SRC_COMMON := 	get_next_line.c		get_next_line_utils.c	ft_split_new.c		ft_strjoin
 				parse_scene00.c		parse_scene01.c			parse_scene02.c		parse_scene03.c	\
 				parse_scene04.c		parse_scene05.c			parse_scene06.c		parse_scene07.c	\
 				parse_scene08.c		parse_scene09.c			parse_scene10.c		parse_scene11.c	\
-				scene_converter00.c
+				scene_converter00.c	parser_free_scene01.c
 				
 SRC := 			$(SRC_COMMON)		main.c
 

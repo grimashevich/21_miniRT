@@ -20,18 +20,13 @@ t_alight *convert_alight(t_alight_p *obj_in);
 
 
 void	sandbox(void)
-{	
-	t_minirt_p	*scene_p;
+{
 	t_minirt	*scene;
-	t_alight *al = convert_alight(NULL);
 
-	(void) scene_p;
-	(void ) al;
-	scene_p = parse_scene_p("test.rt");
-	scene = convert_scene(scene_p);
-	free_scene_p(scene_p);
+	scene = parse_scene("test.rt");
 	(void ) scene;
-
+	free_scene(scene);
+	printf("Done\n");
 }
 
 int	main(void)

@@ -36,7 +36,7 @@ void	free_camera(t_camera_p *camera)
 	free(camera);
 }
 
-void	free_light_array(t_light_p **light_array)
+void	free_light_array_p(t_light_p **light_array)
 {
 	int	i;
 
@@ -57,7 +57,7 @@ void	free_light_array(t_light_p **light_array)
 	free(light_array);
 }
 
-void	free_object_array(t_object_p **object_array)
+void	free_object_array_p(t_object_p **object_array)
 {
 	int	i;
 
@@ -80,8 +80,8 @@ void	free_scene_p(t_minirt_p *scene)
 	if (scene->camera)
 		free_camera(scene->camera);
 	if (scene->lights)
-		free_light_array(scene->lights);
+		free_light_array_p(scene->lights);
 	if (scene->objects)
-		free_object_array(scene->objects);
+		free_object_array_p(scene->objects);
 	free(scene);
 }

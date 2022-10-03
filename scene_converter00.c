@@ -73,6 +73,10 @@ t_material	*convert_material(t_material_p *in)
 
 //TODO MOVE
 void	free_material(t_material_p *mat);
+t_sphere	*convert_sphere(t_sphere_p *in);
+t_plane	*convert_plane(t_plane_p *in);
+t_cylinder	*convert_cylinder(t_cylinder_p *in);
+
 t_object	*convert_object(t_object_p *in)
 {
 	t_object		*out;
@@ -83,11 +87,16 @@ t_object	*convert_object(t_object_p *in)
 	out = ft_calloc(1, sizeof(t_object));
 	if (! out)
 		exit_error("Malloc error in convert_object");
+	if (in->type == SPHERE)
+		out->params = convert_sphere((t_sphere_p *) in->params);
+	else if (in->type == PLANE)
+		out->params = convert_plane((t_plane_p *) in->params);
+	else if (in->type == CYLINDER)
+		out->params = convert_cylinder((t_cylinder_p *) in->params);
 	out->params = in->params;
 	mat = in->mat;
 	out->mat = *convert_material(in->mat);
 	free_material(mat);
-	out->params = in->params;
 	return (out);
 }
 

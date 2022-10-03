@@ -243,5 +243,6 @@ void		*file_format_error(char *str_err);
 void		free_scene_p(t_minirt_p *scene);
 t_minirt_p	*parse_scene_p(char *filename);
 t_minirt	*parse_scene(char *filename);
+void		free_scene(t_minirt *scene);
 
 #endif	//MINIRT_H
