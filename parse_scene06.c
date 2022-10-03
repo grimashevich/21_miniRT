@@ -101,7 +101,7 @@ t_object_p	*parse_cylinder(char *str)
 		return (file_format_error("Cylinder wrong args"));
 	}
 	object = create_base_object(CYLINDER,
-			parse_color(bloks[3]));
+			parse_color(bloks[5]));
 	object->params = create_cylinder_data(parse_coord(bloks[1]),
 										  ft_atod(bloks[3]),
 										  ft_atod(bloks[4]),

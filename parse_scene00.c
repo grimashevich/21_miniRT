@@ -16,9 +16,9 @@ char			*get_file_name(char *str);
 t_vec			*parse_coord(char *str);
 int				check_norm_vector(t_vec *vector);
 void			*error_open_file(char *filename);
-t_minirt			*create_scene(void);
+t_minirt_p			*create_scene(void);
 int				open_scene_file(char *filename, int *fd);
-int				parse_str_scene(t_minirt *scene, char *str, int line_num);
+int				parse_str_scene(t_minirt_p *scene, char *str, int line_num);
 
 int	check_scene_file_extension(char *filename)
 {
@@ -32,11 +32,11 @@ int	check_scene_file_extension(char *filename)
 	return (1);
 }
 
-t_minirt	*parse_scene(char *filename)
+t_minirt_p	*parse_scene_p(char *filename)
 {
 	int		fd;
 	char	*str;
-	t_minirt	*scene;
+	t_minirt_p	*scene;
 	int		parse_error;
 	int		line_num;
 

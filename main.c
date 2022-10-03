@@ -13,19 +13,24 @@
 #include "minirt.h"
 #include "scene_converter.h"
 
+void change_pointer(void **old, void *new);
+t_minirt	*convert_scene(t_minirt_p *in);
+
 t_alight *convert_alight(t_alight_p *obj_in);
 
-t_minirt		*parse_scene(char *filename);
 
 void	sandbox(void)
 {	
-	t_minirt	*sc;
+	t_minirt_p	*scene_p;
+	t_minirt	*scene;
 	t_alight *al = convert_alight(NULL);
 
-	(void) sc;
+	(void) scene_p;
 	(void ) al;
-	sc = parse_scene("test.rt");
-	free_scene(sc);
+	scene_p = parse_scene_p("test.rt");
+	scene = convert_scene(scene_p);
+	free_scene_p(scene_p);
+	(void ) scene;
 
 }
 

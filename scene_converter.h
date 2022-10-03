@@ -16,63 +16,7 @@
 
 #include "minirt.h"
 
-typedef struct s_alight
-{
-	float	ratio;
-	t_color	color;
-}	t_alight;
 
-typedef struct s_camera
-{
-	t_vec			orig;
-	t_vec			dir;
-	unsigned int	fov;
-	t_vec			right;
-	t_vec			up;
-}	t_camera;
-
-typedef struct s_light
-{
-	t_vec	pos;
-	double	intens;
-	t_color	color;
-}	t_light;
-
-typedef struct s_material
-{
-	t_color	color;
-	double	albedo[3];
-	double	spec_exp;
-}	t_material;
-
-typedef struct s_object
-{
-	enum e_obj_type	type;
-	void			*params;
-	int				(*intersect)();
-	t_vec			(*get_normal)();
-	t_material		mat;
-}	t_object;
-
-typedef struct s_sphere_data
-{
-	t_vec	orig;
-	double	r;
-}	t_sphere;
-
-typedef struct s_plane_data
-{
-	t_vec	orig;
-	t_vec	normal;
-}	t_plane;
-
-typedef struct s_cylinder_data
-{
-	t_vec	orig;
-	t_vec	dir;
-	double	d;
-	double	h;
-}	t_cylinder;
 
 
 
@@ -87,6 +31,6 @@ typedef struct s_cylinder_data
 	t_keys		*keys;
 	t_ray		ray;
 	double		tnear;
-}	t_minirt;*/
+}	t_minirt_p;*/
 
 #endif	//SCENE_CONVERTER_H
