@@ -110,3 +110,12 @@ t_object_p	*parse_cylinder(char *str)
 	free(str);
 	return (object);
 }
+
+t_object_p	*parse_cone(char *str)
+{
+	t_object_p		*object;
+
+	object = parse_cylinder(str);
+	object->type = CONE;
+	return (object);
+}

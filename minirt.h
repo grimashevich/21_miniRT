@@ -39,7 +39,8 @@ enum e_obj_type
 {
 	SPHERE,
 	PLANE,
-	CYLINDER
+	CYLINDER,
+	CONE
 };
 
 typedef struct s_color
@@ -114,6 +115,8 @@ typedef struct s_cylinder_data_p
 	double	d;
 	double	h;
 }	t_cylinder_p;
+
+typedef t_cylinder_p t_cone_p;
 
 /*-------------------------- END MODIFIED STRUCTS --------------------------*/
 
@@ -190,6 +193,8 @@ typedef struct s_cylinder_data
 	double	d;
 	double	h;
 }	t_cylinder;
+
+typedef t_cylinder t_cone;
 
 typedef struct s_scene
 {
