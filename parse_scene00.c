@@ -74,7 +74,7 @@ t_minirt_p	*parse_scene_p(char *filename)
 	return (obj);
 }*/
 
-t_camera_p	*create_camera(t_vec *vp, t_vec *vector, int fov)
+t_camera_p	*create_camera(t_vec *vp, t_vec *vector, double fov)
 {
 	t_camera_p	*camera;
 

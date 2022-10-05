@@ -76,7 +76,7 @@ typedef struct s_camera_p
 {
 	t_vec			*orig;
 	t_vec			*dir;
-	unsigned int	fov;
+	double			fov;
 	t_vec			right;
 	t_vec			up;
 }	t_camera_p;

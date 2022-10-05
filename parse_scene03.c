@@ -16,7 +16,7 @@ t_color_p		*parse_color(char *str);
 t_vec		*parse_coord(char *str);
 t_alight_p	*create_alight(float ratio, t_color_p *color);
 t_vec		*create_coord(float x, float y, float z);
-t_camera_p	*create_camera(t_vec *vp, t_vec *vector, int fov);
+t_camera_p	*create_camera(t_vec *vp, t_vec *vector, double fov);
 t_vec		*parse_norm_vector(char *str);
 
 void	*file_format_error(char *str_err)
