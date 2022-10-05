@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 20:33:38 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/29 20:09:17 by eclown           ###   ########.fr       */
+/*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
+/*   Updated: 2022/09/29 20:18:26 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_CONVERTER_H
-# define SCENE_CONVERTER_H
-
-
 #include "minirt.h"
+/*#include "scene_converter.h"*/
 
-
-
-
-
-/*typedef struct s_scene
+int	main(int argc, char **argv)
 {
-	char		*description;
-	t_alight	*alight;
-	t_camera	*camera;
-	t_light		**lights;
-	t_object	**objects;
-	t_mlx		*mlx;
-	t_keys		*keys;
-	t_ray		ray;
-	double		tnear;
-}	t_minirt_p;*/
+	t_minirt	*scene;
+	t_mlx		mlx;
 
-#endif	//SCENE_CONVERTER_H
+	if (argc != 2)
+		return (0);
+	scene = parse_scene(argv[1]);
+	mlx_start(&mlx);
+	scene->mlx = &mlx;
+	init_keys(scene);
+	init_hooks(scene);
+	printf("\e[38;5;141mREADY\e[0m\n");
+	mlx_loop_hook(mlx.ptr, &render, (void *)scene);
+	mlx_loop(mlx.ptr);
+	free_scene(scene);
+	return (0);
+}

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene_converter.h"
+#include "../includes/minirt.h"
 
 t_color convert_color(t_color_p *in)
 {
@@ -94,13 +94,29 @@ t_object	*convert_object(t_object_p *in)
 		exit_error("Malloc error in convert_object");
 	out->type = in->type;
 	if (in->type == SPHERE)
+	{
 		out->params = convert_sphere((t_sphere_p *) in->params);
+		out->intersect = inter_sphere;
+		out->get_normal = get_norm_sphere;
+	}
 	else if (in->type == PLANE)
+	{
 		out->params = convert_plane((t_plane_p *) in->params);
+		out->intersect = inter_plane;
+		out->get_normal = get_norm_plane;
+	}
 	else if (in->type == CYLINDER)
+	{
 		out->params = convert_cylinder((t_cylinder_p *) in->params);
+		out->intersect = inter_cylinder;
+		out->get_normal = get_norm_cylinder;
+	}
 	else if (in->type == CONE)
-		out->params = convert_cone((t_cone_p *) in->params);
+	{
+		out->params = convert_cone((t_cone_p *) in ->params);
+		out->intersect = inter_cone;
+		out->get_normal = get_norm_cone;
+	}
 	out->mat = convert_material(in->mat);
 	return (out);
 }
@@ -231,3 +247,4 @@ t_minirt	*parse_scene(char *filename)
 	free_scene_p(scene_p);
 	return (scene);
 }
+

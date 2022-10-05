@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclown <eclown@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 19:00:26 by eclown            #+#    #+#             */
-/*   Updated: 2022/09/29 20:18:26 by eclown           ###   ########.fr       */
+/*   Created: 2021/11/27 15:36:48 by EClown            #+#    #+#             */
+/*   Updated: 2022/09/16 14:59:00 by eclown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include "scene_converter.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(void)
-{
-	t_minirt	*scene;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 128
+# endif
 
-	scene = parse_scene("test.rt");
-	free_scene(scene);
-	printf("Done\n");
-	return (0);
-}
+# include <stddef.h>
+# include <stdlib.h>
+# include <sys/fcntl.h>
+# include <unistd.h>
+# include "libft.h"
+
+char			*get_next_line(int fd);
+char			*ft_strjoin2(char *s1, char *s2, char *nl);
+
+#endif
